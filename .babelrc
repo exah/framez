@@ -1,0 +1,8 @@
+{
+  "presets": [
+    [ "env", { "loose": true, "modules": false } ]
+  ],
+  "plugins": [
+    [ "transform-object-rest-spread", { "useBuiltIns": true } ]
+  ]
+}
