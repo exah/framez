@@ -1,0 +1,9 @@
+{
+  "name": "fun-animate",
+  "version": "0.0.0",
+  "description": "(fun)ctional animate package",
+  "main": "dist/index.js",
+  "repository": "exah/fun-animate",
+  "author": "John Grishin <hi@johngrish.in>",
+  "license": "MIT"
+}
