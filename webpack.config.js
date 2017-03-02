@@ -10,7 +10,7 @@ module.exports = {
   output: {
     filename: '[name].js',
     library: 'funAnimate',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'lib')
   },
   module: {
     rules: [
