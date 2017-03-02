@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      section {
+        outline: 1px dotted red;
+        height: 50vh;
+        margin: 20px 0;
+      }
+
+      script {
+        display: block !important;
+        white-space: pre;
+        font-family: monospace;
+      }
+    </style>
+    <script src="../dist/main.js"></script>
+  </head>
+  <body>
+    <button class="js-play">Play</button>
+
+    <section></section>
+    <section></section>
+    <section></section>
+    <section></section>
+    <section></section>
+    <section id="target"></section>
+    <section></section>
+    <section></section>
+    <section></section>
+    <section></section>
+
+    <script>
+      var { animate, handlers, easing } = funAnimate
+      var { ease } = handlers
+
+      var $play = document.querySelector('.js-play')
+      var $target = document.querySelector('#target')
+
+      $play.addEventListener('click', function handleClick () {
+        animate(ease(easing.easeInOutQuad), handlers.scroll($target), 2000)
+      })
+
+      $target.addEventListener('click', function handleClick () {
+        animate(handlers.scroll(0), 2000)
+      })
+    </script>
+  </body>
+</html>
