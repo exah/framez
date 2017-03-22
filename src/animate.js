@@ -37,7 +37,7 @@ function animate (...handlers) {
     const progress = elapsed / duration
     const res = handler({ elapsed, remain, duration, progress })
 
-    if (remain < 60 || res === false) {
+    if (remain < (1000 / 60) || res === false) {
       handler({ elapsed: duration, remain: 0, duration, progress: 1 })
       stop()
       resolveFinished()
