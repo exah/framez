@@ -1,18 +1,16 @@
 function animate (...handlers) {
-  const { requestAnimationFrame, cancelAnimationFrame } = window
-
-  const duration = typeof handlers[handlers.length - 1] === 'function' ? 500 : handlers.pop()
-  const handler = initial => handlers.reduce((res, next) => next(res), initial)
+  const handler = (initialRes) => handlers.reduce((res, next) => next(res), initialRes)
 
   let resolveFinished
-  const finished = new Promise(resolve => { resolveFinished = resolve })
+  const finished = new Promise((resolve) => { resolveFinished = resolve })
 
+  let duration = 500
   let frame = null
   let start = null
   let end = null
 
   function pause () {
-    cancelAnimationFrame(frame)
+    window.cancelAnimationFrame(frame)
     frame = null
   }
 
@@ -23,14 +21,7 @@ function animate (...handlers) {
   }
 
   function play () {
-    frame = requestAnimationFrame(tick)
-
-    return {
-      play,
-      pause,
-      stop,
-      finished
-    }
+    frame = window.requestAnimationFrame(tick)
   }
 
   function tick (now) {
@@ -53,7 +44,17 @@ function animate (...handlers) {
     play()
   }
 
-  return play
+  return function (time = duration) {
+    duration = time
+    play()
+
+    return {
+      play,
+      pause,
+      stop,
+      finished
+    }
+  }
 }
 
 export default animate
