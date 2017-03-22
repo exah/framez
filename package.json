@@ -1,7 +1,7 @@
 {
-  "name": "fun-animate",
+  "name": "fpa",
   "version": "0.0.0",
-  "description": "(fun)ctional animate package",
+  "description": "Functional Animation Micro Library",
   "main": "dist/main.js",
   "repository": "exah/fun-animate",
   "author": "John Grishin <hi@johngrish.in>",
