@@ -16,15 +16,15 @@
     </style>
   </head>
   <body>
-    <button class="js-play">Play</button>
-
-    <section></section>
+    <section>
+      <button class="js-play">Go Down</button>
+    </section>
     <section></section>
     <section></section>
     <section></section>
     <section></section>
     <section id="target">
-      <button class="js-back">Go Back</button>
+      <button class="js-back">Go Up</button>
     </section>
     <section></section>
     <section></section>
@@ -40,19 +40,18 @@
 
         var $play = document.querySelector('.js-play')
         var $back = document.querySelector('.js-back')
-        var $target = document.querySelector('#target')
 
         console.log(animate(number(0, 350), ({ value }) => console.log('linear', value))())
         console.log(animate(ease(easeInOutQuad), number(0, 350), ({ value }) => console.log('easing', value))())
 
         $play.addEventListener('click', function handleClick () {
-          animate(ease(easeInOutQuad), scroll($target))(2000)
+          animate(ease(easeInOutQuad), scroll('#target', -10))(2000)
         })
 
-        var jump = (ms) => animate(scroll(0))(ms)
+        var jump = (ms = 2000) => animate(scroll(0))(ms)
 
         $back.addEventListener('click', function handleClick () {
-          jump(2000)
+          jump()
         })
       })()
     </script>
