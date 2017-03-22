@@ -8,6 +8,7 @@ export const number = (start, end) => (res) => ({
   value: (end * res.progress) + start
 })
 
+// TODO: set value on intial run
 export function scroll (target = 0, offset = 0) {
   const start = window.scrollY || window.pageYOffset
   const end = typeof target === 'string'
@@ -20,6 +21,7 @@ export function scroll (target = 0, offset = 0) {
   return (res) => {
     const next = number(start, distance)(res)
     window.scrollTo(0, next.value)
+
     return res
   }
 }
