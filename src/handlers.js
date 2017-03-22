@@ -5,7 +5,7 @@ export const ease = (easingFn) => (res) => ({
 
 export const value = (start, end) => (res) => ({
   ...res,
-  value: end * res.progress + start
+  value: (end * res.progress) + start
 })
 
 export function scroll (target = 0, offset = 0) {

@@ -21,7 +21,6 @@ export const easeInOutQuart = powerEaseInOut(4)
 export const easeInQuint = powerEaseIn(5)
 export const easeOutQuint = powerEaseOut(5)
 export const easeInOutQuint = powerEaseInOut(5)
-
 export const easeInSin = (t) => 1 + Math.sin(Math.PI / 2 * t - Math.PI / 2)
 export const easeOutSin = (t) => Math.sin(Math.PI / 2 * t)
 export const easeInOutSin = (t) => (1 + Math.sin(Math.PI * t - Math.PI / 2)) / 2
@@ -29,8 +28,7 @@ export const easeInOutSin = (t) => (1 + Math.sin(Math.PI * t - Math.PI / 2)) / 2
 export const elastic = (power) => (t) => (
   t === 0 || t === 1
     ? t
-    : -Math.pow(2, 10 * (t - 1)) * Math.sin((((t - 1) - (power / (Math.PI * 2.0) * Math.asin(1))) * (Math.PI * 2)) / power)
+    : -Math.pow(2, 10 * (t - 1)) * Math.sin((((t - 1) - (power / (Math.PI * 2) * Math.asin(1))) * (Math.PI * 2)) / power)
 )
-
 export const elasticOut = (power) => (t) => 1 - elastic(power)(1 - t)
 export const elasticInOut = (power) => (t) => t < 0.5 ? elastic(power)(t * 2) / 2 : 1 - elastic(power)(t * -2 + 2) / 2
