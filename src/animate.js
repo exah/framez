@@ -24,6 +24,13 @@ function animate (...handlers) {
 
   function play () {
     frame = requestAnimationFrame(tick)
+
+    return {
+      play,
+      pause,
+      stop,
+      finished
+    }
   }
 
   function tick (now) {
@@ -45,14 +52,8 @@ function animate (...handlers) {
     }
     play()
   }
-  play()
 
-  return {
-    play,
-    pause,
-    stop,
-    finished
-  }
+  return play
 }
 
 export default animate

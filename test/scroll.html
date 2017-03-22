@@ -35,19 +35,22 @@
     <script>
       (function () {
         var { animate, handlers, easings } = fpa
-        var { ease, scroll } = handlers
+        var { ease, scroll, number } = handlers
         var { easeInOutQuad } = easings
 
         var $play = document.querySelector('.js-play')
         var $back = document.querySelector('.js-back')
         var $target = document.querySelector('#target')
 
+        console.log(animate(number(0, 350), ({ value }) => console.log('linear', value), 400)())
+        console.log(animate(ease(easeInOutQuad), number(0, 350), ({ value }) => console.log('easing', value), 400)())
+
         $play.addEventListener('click', function handleClick () {
-          animate(ease(easeInOutQuad), scroll($target), 2000)
+          animate(ease(easeInOutQuad), scroll($target), 2000)()
         })
 
         $back.addEventListener('click', function handleClick () {
-          animate(scroll(0), 2000)
+          animate(scroll(0), 2000)()
         })
       })()
     </script>
