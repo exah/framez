@@ -2,13 +2,13 @@
   "name": "fun-animate",
   "version": "0.0.0",
   "description": "(fun)ctional animate package",
-  "main": "lib/main.js",
+  "main": "dist/main.js",
   "repository": "exah/fun-animate",
   "author": "John Grishin <hi@johngrish.in>",
   "license": "MIT",
   "scripts": {
     "build": "webpack",
-    "prebuild": "rimraf lib"
+    "prebuild": "rimraf dist"
   },
   "devDependencies": {
     "babel-core": "^6.23.1",
