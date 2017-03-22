@@ -14,7 +14,6 @@
         font-family: monospace;
       }
     </style>
-    <script src="../dist/main.js"></script>
   </head>
   <body>
     <button class="js-play">Play</button>
@@ -24,26 +23,33 @@
     <section></section>
     <section></section>
     <section></section>
-    <section id="target"></section>
+    <section id="target">
+      <button class="js-back">Go Back</button>
+    </section>
     <section></section>
     <section></section>
     <section></section>
     <section></section>
 
+    <script src="../dist/main.js"></script>
     <script>
-      var { animate, handlers, easing } = fpa
-      var { ease } = handlers
+      (function () {
+        var { animate, handlers, easings } = fpa
+        var { ease, scroll } = handlers
+        var { easeInOutQuad } = easings
 
-      var $play = document.querySelector('.js-play')
-      var $target = document.querySelector('#target')
+        var $play = document.querySelector('.js-play')
+        var $back = document.querySelector('.js-back')
+        var $target = document.querySelector('#target')
 
-      $play.addEventListener('click', function handleClick () {
-        animate(ease(easing.easeInOutQuad), handlers.scroll($target), 2000)
-      })
+        $play.addEventListener('click', function handleClick () {
+          animate(ease(easeInOutQuad), scroll($target), 2000)
+        })
 
-      $target.addEventListener('click', function handleClick () {
-        animate(handlers.scroll(0), 2000)
-      })
+        $back.addEventListener('click', function handleClick () {
+          animate(scroll(0), 2000)
+        })
+      })()
     </script>
   </body>
 </html>

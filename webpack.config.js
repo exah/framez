@@ -1,11 +1,12 @@
 const path = require('path')
 
 module.exports = {
+  context: path.resolve(__dirname, 'src'),
   entry: {
-    main: './src/index.js',
-    animate: './src/animate.js',
-    easing: './src/easing.js',
-    handlers: './src/handlers.js'
+    main: './index.js',
+    animate: './animate.js',
+    easings: './easings.js',
+    handlers: './handlers.js'
   },
   output: {
     filename: '[name].js',
