@@ -1,7 +1,8 @@
 import engine from './engine'
+import { compose } from './utils'
 
 function animate (...handlers) {
-  const handler = (initial) => handlers.reduce((res, next) => next(res), initial)
+  const handler = compose(handlers)
 
   return function (duration) {
     const runner = engine(handler, duration)
