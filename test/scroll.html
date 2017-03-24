@@ -19,12 +19,13 @@
     <section>
       <button class="js-play">Go Down</button>
     </section>
-    <section></section>
+    <section id="elastic-target"></section>
     <section></section>
     <section></section>
     <section></section>
     <section id="target">
       <button class="js-back">Go Up</button>
+      <button class="js-elastic">Elastic Jump</button>
     </section>
     <section></section>
     <section></section>
@@ -36,10 +37,12 @@
       (function () {
         var { animate, handlers, easings } = fpa
         var { ease, scroll, number } = handlers
-        var { easeInOutQuad } = easings
+        var { easeInOutQuad, elasticInOut } = easings
 
         var $play = document.querySelector('.js-play')
         var $back = document.querySelector('.js-back')
+        var $elastic = document.querySelector('.js-elastic')
+        var $elasticTarget = document.querySelector('#elastic-target')
 
         console.log(animate(number(0, 350), ({ value }) => console.log('linear', value))())
         console.log(animate(ease(easeInOutQuad), number(0, 350), ({ value }) => console.log('easing', value))())
@@ -52,6 +55,9 @@
 
         $back.addEventListener('click', function handleClick () {
           jump()
+        })
+        $elastic.addEventListener('click', function handleClick () {
+          animate(ease(elasticInOut(2)), scroll($elasticTarget))(2000)
         })
       })()
     </script>
