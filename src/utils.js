@@ -31,3 +31,20 @@ export const nextUnit = (startUnit, endUnit) => {
   return (progress) => nextNumber(start, end, progress) + unit
 }
 
+//
+// Get next object using progress and nextUnit
+//
+
+export const nextObject = (start, end) => {
+  const keys = Object.keys(end)
+
+  const next = keys.reduce((obj, key) => {
+    obj[key] = nextUnit(start[key], end[key])
+    return obj
+  }, {})
+
+  return (progress) => keys.reduce((obj, key) => {
+    obj[key] = next[key](progress)
+    return obj
+  }, {})
+}

@@ -1,4 +1,4 @@
-import { nextNumber, nextUnit } from './utils'
+import { nextNumber, nextUnit, nextObject } from './utils'
 
 export const ease = (fn) => (res) => ({
   ...res,
@@ -15,6 +15,22 @@ export const unit = (startUnit, endUnit) => {
   return (res) => ({
     ...res,
     unit: next(res.progress)
+  })
+}
+
+export const object = (start, end) => {
+  const next = nextObject(start, end)
+  return (res) => ({
+    ...res,
+    object: Object.assign({}, start, next(res.progress))
+  })
+}
+
+export const updateObject = (start, end) => {
+  const next = nextObject(start, end)
+  return (res) => ({
+    ...res,
+    object: Object.assign(start, next(res.progress))
   })
 }
 
