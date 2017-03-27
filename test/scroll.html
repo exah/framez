@@ -36,7 +36,7 @@
     <script>
       (function () {
         var { animate, handlers, easings } = fpa
-        var { ease, scroll, number } = handlers
+        var { ease, scroll, number, unit, object, updateObject } = handlers
         var { easeInOutQuad, elasticInOut } = easings
 
         var $play = document.querySelector('.js-play')
@@ -44,8 +44,28 @@
         var $elastic = document.querySelector('.js-elastic')
         var $elasticTarget = document.querySelector('#elastic-target')
 
-        console.log(animate(number(0, 350), ({ value }) => console.log('linear', value))())
-        console.log(animate(ease(easeInOutQuad), number(0, 350), ({ value }) => console.log('easing', value))())
+        console.log(
+          animate(
+            number(0, 350),
+            (res) => console.log('linear', res.number)
+          )()
+        )
+
+        animate(
+          ease(easeInOutQuad),
+          unit(0, '350px'),
+          (res) => console.log('easing', res.unit)
+        )()
+
+        const source = {
+          height: 10,
+          width: '200px'
+        }
+
+        animate(
+          updateObject(source, { height: 500, width: 1000 }),
+          (res) => console.log('target', res.object)
+        )(100).finished.then(() => console.log('source', source))
 
         $play.addEventListener('click', function handleClick () {
           animate(ease(easeInOutQuad), scroll('#target', -10))(2000)
