@@ -1,3 +1,5 @@
+import { nextNumber } from './utils'
+
 export const ease = (fn) => (res) => ({
   ...res,
   progress: fn(res.progress)
@@ -5,7 +7,7 @@ export const ease = (fn) => (res) => ({
 
 export const number = (start, end) => (res) => ({
   ...res,
-  value: (end * res.progress) + start
+  number: nextNumber(start, end, res.progress)
 })
 
 // TODO: set value on intial run
@@ -19,8 +21,8 @@ export function scroll (target = 0, offset = 0) {
   const distance = end - start + offset
 
   return (res) => {
-    const next = number(start, distance)(res)
-    window.scrollTo(0, next.value)
+    const next = nextNumber(start, distance, res.progress)
+    window.scrollTo(0, next)
 
     return res
   }

@@ -4,3 +4,10 @@
 //
 
 export const compose = (fns) => (initial) => fns.reduce((value, fn) => fn(value), initial)
+
+//
+// Get next number by progress value
+//
+
+export const nextNumber = (start, end, progress) => ((end * progress) + start)
+
