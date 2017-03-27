@@ -1,4 +1,4 @@
-import { nextNumber } from './utils'
+import { nextNumber, nextUnit } from './utils'
 
 export const ease = (fn) => (res) => ({
   ...res,
@@ -9,6 +9,14 @@ export const number = (start, end) => (res) => ({
   ...res,
   number: nextNumber(start, end, res.progress)
 })
+
+export const unit = (startUnit, endUnit) => {
+  const next = nextUnit(startUnit, endUnit)
+  return (res) => ({
+    ...res,
+    unit: next(res.progress)
+  })
+}
 
 // TODO: set value on intial run
 export function scroll (target = 0, offset = 0) {
