@@ -61,7 +61,7 @@ export const nextObject = (start, end) => {
 // Update dom element styles with progress and nextUnit
 //
 
-export const updateStyle = (target, props) => {
+export const updateStyles = (target, props) => {
   const $el = select(target)
   if ($el == null) throw new Error('target not Element in DOM')
 

@@ -1,5 +1,5 @@
 import { select } from './dom.js'
-import { nextNumber, nextUnit, nextObject, updateStyle } from './utils'
+import { nextNumber, nextUnit, nextObject, updateStyles } from './utils'
 
 export const ease = (fn) => (res) => ({
   ...res,
@@ -36,7 +36,7 @@ export const updateObject = (start, end) => {
 }
 
 export const styles = (target, props) => {
-  const next = updateStyle(target, props)
+  const next = updateStyles(target, props)
   return (res) => ({
     ...res,
     target: next(res.progress)
