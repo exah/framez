@@ -9,7 +9,7 @@ export const compose = (fns) => (initial) => fns.reduce((value, fn) => fn(value)
 // Get next number by progress value
 //
 
-export const nextNumber = (start, end, progress) => ((end * progress) + start)
+export const nextNumber = (start, end, progress) => (((end - start) * progress) + start)
 
 //
 // Parse number with unit

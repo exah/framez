@@ -42,10 +42,9 @@ export function scroll (target = 0, offset = 0) {
     : typeof target === 'object'
       ? target.getBoundingClientRect().top + start
       : Number(target)
-  const distance = end - start + offset
 
   return (res) => {
-    const next = nextNumber(start, distance, res.progress)
+    const next = nextNumber(start, end, res.progress)
     window.scrollTo(0, next)
 
     return res
