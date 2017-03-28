@@ -2,10 +2,15 @@
 <html>
   <head>
     <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+
       section {
-        outline: 1px dotted red;
+        background-color: red;
         height: 50vh;
-        margin: 20px 0;
+        margin-bottom: 20px;
       }
 
       script {
@@ -19,11 +24,13 @@
     <section>
       <button class="js-play">Go Down</button>
     </section>
-    <section id="elastic-target"></section>
+    <section class="js-height-target js-elastic-target">
+      <button class="js-toggle-height">Animate Height</button>
+    </section>
     <section></section>
     <section></section>
     <section></section>
-    <section id="target">
+    <section class="js-target">
       <button class="js-back">Go Up</button>
       <button class="js-elastic">Elastic Jump</button>
     </section>
@@ -36,13 +43,14 @@
     <script>
       (function () {
         var { animate, handlers, easings } = ffffan
-        var { ease, scroll, number, unit, object, updateObject } = handlers
+        var { ease, scroll, number, unit, object, updateObject, dom } = handlers
         var { easeInOutQuad, elasticInOut } = easings
 
         var $play = document.querySelector('.js-play')
+        var $toggleHeight = document.querySelector('.js-toggle-height')
         var $back = document.querySelector('.js-back')
         var $elastic = document.querySelector('.js-elastic')
-        var $elasticTarget = document.querySelector('#elastic-target')
+        var $elasticTarget = document.querySelector('.js-elastic-target')
 
         console.log(
           animate(
@@ -68,7 +76,7 @@
         )(100).finished.then(() => console.log('source', source))
 
         $play.addEventListener('click', function handleClick () {
-          animate(ease(easeInOutQuad), scroll('#target', -10))(2000)
+          animate(ease(easeInOutQuad), scroll('.js-target', -10))(2000)
         })
 
         var jump = (ms = 2000) => animate(scroll(0))(ms)
@@ -78,6 +86,27 @@
         })
         $elastic.addEventListener('click', function handleClick () {
           animate(ease(elasticInOut(2)), scroll($elasticTarget))(2000)
+        })
+
+        var isCollapsed = false
+        $toggleHeight.addEventListener('click', function handleClick () {
+          const $height = document.querySelector('.js-height-target')
+
+          animate(
+            ease(easeInOutQuad),
+            dom(
+              $height,
+              {
+                height: isCollapsed ? (window.innerHeight / 2) : 0,
+                opacity: isCollapsed ? 1 : 0.1
+              }
+            )
+          )()
+          .finished
+          .then(() => {
+            isCollapsed = !isCollapsed
+            if (!isCollapsed) $height.style.height = ''
+          })
         })
       })()
     </script>

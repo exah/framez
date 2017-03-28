@@ -1,4 +1,5 @@
-import { nextNumber, nextUnit, nextObject } from './utils'
+import { select } from './dom.js'
+import { nextNumber, nextUnit, nextObject, nextDom } from './utils'
 
 export const ease = (fn) => (res) => ({
   ...res,
@@ -34,14 +35,23 @@ export const updateObject = (start, end) => {
   })
 }
 
-// TODO: set value on intial run
+export const dom = (target, props) => {
+  const next = nextDom(target, props)
+
+  return (res) => ({
+    ...res,
+    target: next(res.progress)
+  })
+}
+
 export function scroll (target = 0, offset = 0) {
+  const $el = select(target)
   const start = window.scrollY || window.pageYOffset
-  const end = typeof target === 'string'
-    ? document.querySelector(target).getBoundingClientRect().top + start
-    : typeof target === 'object'
-      ? target.getBoundingClientRect().top + start
-      : Number(target)
+  const end = typeof target === 'number'
+    ? target
+    : $el == null
+      ? 0
+      : $el.getBoundingClientRect().top + start
 
   return (res) => {
     const next = nextNumber(start, end, res.progress)

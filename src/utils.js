@@ -1,9 +1,17 @@
+import { select, getStyle, setStyle } from './dom'
+
 //
 // Compose muliple function into one and execute them consistently
 // with result value of previous function
 //
 
 export const compose = (fns) => (initial) => fns.reduce((value, fn) => fn(value), initial)
+
+//
+// camelCase to kebab-case
+//
+
+export const kebab = (str) => str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()
 
 //
 // Get next number by progress value
@@ -47,4 +55,27 @@ export const nextObject = (start, end) => {
     obj[key] = next[key](progress)
     return obj
   }, {})
+}
+
+//
+// Get set dom element styles using progress and nextUnit
+//
+
+export const nextDom = (target, props) => {
+  const $el = select(target)
+  if ($el == null) throw new Error('target not Element in DOM')
+
+  const keys = Object.keys(props)
+  const next = keys.reduce((obj, prop) => {
+    obj[prop] = nextUnit(getStyle($el, prop), props[prop])
+    return obj
+  }, {})
+
+  return (progress) => {
+    keys.forEach((prop) => {
+      const val = next[prop](progress)
+      setStyle($el, prop, val)
+    })
+    return $el
+  }
 }
