@@ -1,5 +1,5 @@
 import { select } from './dom.js'
-import { nextNumber, nextUnit, nextObject, nextDom } from './utils'
+import { nextNumber, nextUnit, nextObject, updateStyle } from './utils'
 
 export const ease = (fn) => (res) => ({
   ...res,
@@ -35,9 +35,8 @@ export const updateObject = (start, end) => {
   })
 }
 
-export const dom = (target, props) => {
-  const next = nextDom(target, props)
-
+export const styles = (target, props) => {
+  const next = updateStyle(target, props)
   return (res) => ({
     ...res,
     target: next(res.progress)
@@ -54,9 +53,8 @@ export function scroll (target = 0, offset = 0) {
       : $el.getBoundingClientRect().top + start
 
   return (res) => {
-    const next = nextNumber(start, end, res.progress)
-    window.scrollTo(0, next)
-
+    const nextY = nextNumber(start, end, res.progress)
+    window.scrollTo(0, nextY)
     return res
   }
 }

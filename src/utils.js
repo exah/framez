@@ -28,7 +28,7 @@ export const getNumber = (str) => parseFloat(str, 10)
 export const getUnit = (str) => String(str).replace(/([0-9]|\.|,)+([\S]+)?/, '$2').trim()
 
 //
-// Get next unit number using nextNumber
+// Get next unit number with nextNumber
 //
 
 export const nextUnit = (startUnit, endUnit) => {
@@ -40,7 +40,7 @@ export const nextUnit = (startUnit, endUnit) => {
 }
 
 //
-// Get next object using progress and nextUnit
+// Get next object with progress and nextUnit
 //
 
 export const nextObject = (start, end) => {
@@ -58,10 +58,10 @@ export const nextObject = (start, end) => {
 }
 
 //
-// Get set dom element styles using progress and nextUnit
+// Update dom element styles with progress and nextUnit
 //
 
-export const nextDom = (target, props) => {
+export const updateStyle = (target, props) => {
   const $el = select(target)
   if ($el == null) throw new Error('target not Element in DOM')
 
@@ -72,10 +72,7 @@ export const nextDom = (target, props) => {
   }, {})
 
   return (progress) => {
-    keys.forEach((prop) => {
-      const val = next[prop](progress)
-      setStyle($el, prop, val)
-    })
+    keys.forEach((prop) => setStyle($el, prop, next[prop](progress)))
     return $el
   }
 }
