@@ -52,12 +52,10 @@
         var $elastic = document.querySelector('.js-elastic')
         var $elasticTarget = document.querySelector('.js-elastic-target')
 
-        console.log(
-          animate(
-            number(0, 350),
-            (res) => console.log('linear', res.number)
-          )()
-        )
+        animate(
+          number(0, 350),
+          (res) => console.log('linear', res.number)
+        )()
 
         animate(
           ease(easeInOutQuad),
@@ -90,16 +88,11 @@
 
         var isCollapsed = false
         $toggleHeight.addEventListener('click', function handleClick () {
-          const $height = document.querySelector('.js-height-target')
-
           animate(
             ease(easeInOutQuad),
-            styles(
-              $height,
-              {
-                height: isCollapsed ? (window.innerHeight / 2) : 0,
-                opacity: isCollapsed ? 1 : 0.1
-              }
+            styles('.js-height-target', isCollapsed
+              ? { height: window.innerHeight / 2, opacity: 1 }
+              : { height: 0, opacity: 0.1 }
             )
           )()
           .finished
