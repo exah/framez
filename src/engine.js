@@ -3,6 +3,8 @@ function engine (handler, duration = 500) {
   let start = null
   let end = null
 
+  let resolveStarted
+  const started = new Promise((resolve) => { resolveStarted = resolve })
   let resolveFinished
   const finished = new Promise((resolve) => { resolveFinished = resolve })
 
@@ -25,6 +27,7 @@ function engine (handler, duration = 500) {
     if (start == null || end == null) {
       start = now
       end = now + duration
+      resolveStarted()
     }
 
     const elapsed = now - start
@@ -41,7 +44,7 @@ function engine (handler, duration = 500) {
     play()
   }
 
-  return { play, stop, pause, finished }
+  return { play, stop, pause, started, finished }
 }
 
 export default engine
