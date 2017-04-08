@@ -44,15 +44,20 @@ export const styles = (target, props) => {
 }
 
 export function scroll (target = 0, offset = 0) {
-  const $el = select(target)
-  const start = window.scrollY || window.pageYOffset
-  const end = typeof target === 'number'
-    ? target
-    : $el == null
-      ? 0
-      : $el.getBoundingClientRect().top + start
+  let start = 0
+  let end = 0
 
   return (res) => {
+    if (res.isStart) {
+      const $el = select(target)
+      start = window.scrollY || window.pageYOffset
+      end = typeof target === 'number'
+        ? target
+        : $el == null
+          ? 0
+          : $el.getBoundingClientRect().top + start
+    }
+
     const nextY = nextNumber(start, end, res.progress)
     window.scrollTo(0, nextY)
     return res

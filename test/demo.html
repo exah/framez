@@ -2,42 +2,43 @@
 <html>
   <head>
     <style>
-      html, body {
+
+      html,
+      body {
         margin: 0;
-        padding: 0;
-      }
-
-      section {
+        height: 100%;
+        padding: 0 5px;
         background-color: red;
-        height: 50vh;
-        margin-bottom: 20px;
       }
 
-      script {
-        display: block !important;
-        white-space: pre;
-        font-family: monospace;
+      .section {
+        background-color: rgba(75, 75, 75, .2);
+        height: 100%;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding: 10px;
       }
+
     </style>
   </head>
   <body>
-    <section>
+    <section class="section">
       <button class="js-play">Go Down</button>
     </section>
-    <section class="js-height-target js-elastic-target">
+    <section class="section js-height-target js-elastic-target">
       <button class="js-toggle-height">Animate Height</button>
     </section>
-    <section></section>
-    <section></section>
-    <section></section>
-    <section class="js-target">
+    <section class="section"></section>
+    <section class="section"></section>
+    <section class="section"></section>
+    <section class="section js-target">
       <button class="js-back">Go Up</button>
       <button class="js-elastic">Elastic Jump</button>
     </section>
-    <section></section>
-    <section></section>
-    <section></section>
-    <section></section>
+    <section class="section"></section>
+    <section class="section"></section>
+    <section class="section"></section>
+    <section class="section"></section>
 
     <script src="../dist/main.js"></script>
     <script>
@@ -77,21 +78,24 @@
           animate(ease(easeInOutQuad), scroll('.js-target', -10))(2000)
         })
 
-        var jump = (ms = 2000) => animate(scroll(0))(ms)
+        var jump = animate(scroll(0))
+        var elasticJump = animate(ease(elasticInOut(1)), scroll($elasticTarget))
 
         $back.addEventListener('click', function handleClick () {
-          jump()
+          jump(2000)
         })
         $elastic.addEventListener('click', function handleClick () {
-          animate(ease(elasticInOut(1)), scroll($elasticTarget))(2000)
+          elasticJump(2000)
         })
 
         var isCollapsed = false
         $toggleHeight.addEventListener('click', function handleClick () {
+          var $heightTarget = document.querySelector('.js-height-target')
+
           animate(
             ease(easeInOutQuad),
-            styles('.js-height-target', isCollapsed
-              ? { height: window.innerHeight / 2, opacity: 1 }
+            styles($heightTarget, isCollapsed
+              ? { height: window.innerHeight, opacity: 1 }
               : { height: 0, opacity: 0.1 }
             )
           )()
@@ -99,8 +103,8 @@
           .then(() => {
             isCollapsed = !isCollapsed
             if (!isCollapsed) {
-              $height.style.height = ''
-              $height.style.opacity = ''
+              $heightTarget.style.height = ''
+              $heightTarget.style.opacity = ''
             }
           })
         })
