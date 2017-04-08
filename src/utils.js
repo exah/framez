@@ -1,6 +1,19 @@
 import { select, getStyle, setStyle } from './dom'
 
 //
+// Deferred promise
+//
+
+export const deferredPromise = () => {
+  const result = {}
+  result.promise = new Promise((resolve, reject) => {
+    result.resolve = resolve
+    result.reject = reject
+  })
+  return result
+}
+
+//
 // Compose muliple function into one and execute them consistently
 // with result value of previous function
 //

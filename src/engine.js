@@ -1,12 +1,12 @@
-function engine (handler, duration = 500) {
+import { deferredPromise } from './utils'
+
+function engine (onTick, duration = 500) {
+  const started = deferredPromise()
+  const finished = deferredPromise()
+
   let frame = null
   let start = null
   let end = null
-
-  let resolveStarted
-  const started = new Promise((resolve) => { resolveStarted = resolve })
-  let resolveFinished
-  const finished = new Promise((resolve) => { resolveFinished = resolve })
 
   function pause () {
     window.cancelAnimationFrame(frame)
@@ -15,6 +15,7 @@ function engine (handler, duration = 500) {
 
   function stop () {
     pause()
+    finished.resolve()
     start = null
     end = null
   }
@@ -24,27 +25,35 @@ function engine (handler, duration = 500) {
   }
 
   function tick (now) {
-    if (start == null || end == null) {
+    const isStart = (start == null || end == null)
+
+    if (isStart) {
       start = now
       end = now + duration
-      resolveStarted()
+      started.resolve()
     }
 
     const elapsed = now - start
     const remain = end - now
     const progress = elapsed / duration
-    const res = handler({ elapsed, remain, duration, progress })
+    const isEnd = (remain < (1000 / 60))
 
-    if (remain < (1000 / 60) || res === false) {
-      handler({ elapsed: duration, remain: 0, duration, progress: 1 })
-      stop()
-      resolveFinished()
-      return
-    }
-    play()
+    onTick(
+      isEnd !== true
+        ? { elapsed, remain, duration, progress, isStart, isEnd }
+        : { elapsed: duration, remain: 0, duration, progress: 1, isStart, isEnd }
+    )
+
+    isEnd ? stop() : play()
   }
 
-  return { play, stop, pause, started, finished }
+  return {
+    play,
+    stop,
+    pause,
+    started: started.promise,
+    finished: finished.promise
+  }
 }
 
 export default engine
