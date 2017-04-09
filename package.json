@@ -1,13 +1,19 @@
 {
-  "name": "A",
+  "name": "@exah/A",
   "version": "0.0.0",
   "description": "Collection of functions for creating web animations",
   "main": "lib/A.umd.js",
   "module": "lib/index.js",
-  "repository": "exah/fun-animate",
+  "repository": "exah/A",
   "author": "John Grishin <hi@johngrish.in>",
   "license": "MIT",
   "files": [ "lib" ],
+  "tags": [
+    "animate",
+    "animation",
+    "requestanimationframe",
+    "css"
+  ],
   "scripts": {
     "watch": "rollup -c -w",
     "build": "npm run build:umd && npm run build:es6",
