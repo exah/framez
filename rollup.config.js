@@ -1,5 +1,6 @@
-import resolve from 'rollup-plugin-node-resolve'
 import buble from 'rollup-plugin-buble'
+import json from 'rollup-plugin-json'
+import resolve from 'rollup-plugin-node-resolve'
 import uglify from 'rollup-plugin-uglify'
 
 const bubleConfig = {
@@ -11,6 +12,7 @@ export default {
   format: 'umd',
   moduleName: 'A',
   plugins: [
+    json(),
     resolve(),
     buble(bubleConfig),
     uglify()

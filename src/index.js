@@ -8,6 +8,7 @@ import styles from './styles'
 import unit from './unit'
 import updateObject from './update-object'
 import * as timing from './timing'
+import { version } from '../package.json'
 
 export {
   animate,
@@ -19,5 +20,6 @@ export {
   scroll,
   styles,
   unit,
-  updateObject
+  updateObject,
+  version
 }
