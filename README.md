@@ -1,12 +1,20 @@
-# fpa
+# A
 
-> Functional Animation Micro Library
+Collection of functions for creating web animations
 
+---
 
-- Zero deps
-- Micro
-- Functional
+> ⚠️ This project is work in progress
 
+---
+
+## Usage
+
+```sh
+$ npm install --save @exah/A
+# OR
+$ yarn add @exah/A
+```
 
 ---
 

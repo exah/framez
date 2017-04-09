@@ -12,7 +12,7 @@ module.exports = {
   },
   output: {
     filename: '[name].js',
-    library: 'ffffan',
+    library: 'A',
     path: path.resolve(__dirname, 'dist')
   },
   module: {
