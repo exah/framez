@@ -1,6 +1,6 @@
 import { deferredPromise } from './utils/deferred-promise'
 
-function engine (onTick, duration = 500) {
+function core (onTick, duration = 500) {
   const started = deferredPromise()
   const finished = deferredPromise()
 
@@ -56,4 +56,4 @@ function engine (onTick, duration = 500) {
   }
 }
 
-export default engine
+export default core
