@@ -262,7 +262,7 @@ browser-resolve@^1.11.0:
   dependencies:
     resolve "1.1.7"
 
-buble@^0.15.0:
+buble@^0.15.0, buble@^0.15.2:
   version "0.15.2"
   resolved "https://registry.yarnpkg.com/buble/-/buble-0.15.2.tgz#547fc47483f8e5e8176d82aa5ebccb183b02d613"
   dependencies:

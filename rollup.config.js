@@ -3,10 +3,6 @@ import json from 'rollup-plugin-json'
 import resolve from 'rollup-plugin-node-resolve'
 import uglify from 'rollup-plugin-uglify'
 
-const bubleConfig = {
-  objectAssign: 'Object.assign'
-}
-
 export default {
   entry: 'src/index.js',
   format: 'umd',
@@ -14,9 +10,9 @@ export default {
   plugins: [
     json(),
     resolve(),
-    buble(bubleConfig),
+    buble({ objectAssign: 'Object.assign' }),
     uglify()
   ],
   sourceMap: true,
-  dest: 'dist/A.js'
+  dest: 'lib/A.umd.js'
 }

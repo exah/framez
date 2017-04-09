@@ -40,12 +40,11 @@
     <section class="section"></section>
     <section class="section"></section>
 
-    <script src="../dist/A.js"></script>
+    <script src="../lib/A.umd.js"></script>
     <script>
       (function () {
         var {
           animate,
-          timing,
           ease,
           scroll,
           number,
@@ -54,7 +53,8 @@
           updateObject,
           styles
         } = A
-        var { easeInOut, elasticInOut } = timing
+
+        var { easeInOut, elasticInOut } = A.timing
 
         var $play = document.querySelector('.js-play')
         var $toggleHeight = document.querySelector('.js-toggle-height')
