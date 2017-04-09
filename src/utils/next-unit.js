@@ -1,5 +1,5 @@
-import nextNumber from './next-number'
 import { getNumber, getUnit } from './unit'
+import nextNumber from './next-number'
 
 //
 // Get next unit number with nextNumber

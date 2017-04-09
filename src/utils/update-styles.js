@@ -1,7 +1,7 @@
-import select from './select'
 import getStyle from './get-style'
-import setStyle from './set-style'
 import nextUnit from './next-unit'
+import select from './select'
+import setStyle from './set-style'
 
 //
 // Update dom element styles with progress and nextUnit

@@ -1,5 +1,5 @@
-import select from './utils/select'
 import nextNumber from './utils/next-number'
+import select from './utils/select'
 
 function scroll (target = 0, offset = 0) {
   let start = 0

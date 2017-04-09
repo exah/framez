@@ -9,9 +9,17 @@
   "scripts": {
     "build": "rollup -c",
     "watch": "rollup -c -w",
-    "prebuild": "rimraf dist"
+    "prebuild": "rimraf dist",
+    "prewatch": "rimraf dist",
+    "lint": "eslint src"
   },
   "devDependencies": {
+    "eslint": "^3.19.0",
+    "eslint-config-standard": "^10.2.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-node": "^4.2.2",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1",
     "rimraf": "^2.6.1",
     "rollup": "^0.41.6",
     "rollup-plugin-babel": "^2.7.1",
