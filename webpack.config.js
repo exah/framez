@@ -4,10 +4,7 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 module.exports = {
   devtool: 'source-map',
   entry: {
-    main: './src/index.js',
-    animate: './src/animate.js',
-    timing: './src/timing/index.js',
-    handlers: './src/handlers.js'
+    A: './src/index.js'
   },
   output: {
     filename: '[name].js',
