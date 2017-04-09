@@ -12,12 +12,10 @@
     "prebuild": "rimraf dist"
   },
   "devDependencies": {
-    "babel-core": "^6.24.0",
-    "babel-plugin-transform-object-rest-spread": "^6.23.0",
-    "babel-preset-env": "^1.2.2",
     "rimraf": "^2.6.1",
     "rollup": "^0.41.6",
     "rollup-plugin-babel": "^2.7.1",
+    "rollup-plugin-buble": "^0.15.0",
     "rollup-plugin-node-resolve": "^3.0.0",
     "rollup-plugin-uglify": "^1.0.1",
     "rollup-watch": "^3.2.2"

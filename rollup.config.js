@@ -1,6 +1,10 @@
 import resolve from 'rollup-plugin-node-resolve'
-import babel from 'rollup-plugin-babel'
+import buble from 'rollup-plugin-buble'
 import uglify from 'rollup-plugin-uglify'
+
+const bubleConfig = {
+  objectAssign: 'Object.assign'
+}
 
 export default {
   entry: 'src/index.js',
@@ -8,7 +12,7 @@ export default {
   moduleName: 'A',
   plugins: [
     resolve(),
-    babel(),
+    buble(bubleConfig),
     uglify()
   ],
   sourceMap: true,
