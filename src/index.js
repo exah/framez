@@ -21,5 +21,3 @@ export {
   unit,
   updateObject
 }
-
-export default animate
