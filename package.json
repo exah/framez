@@ -1,7 +1,7 @@
 {
   "name": "@exah/A",
   "version": "0.0.0",
-  "description": "Collection of functions for creating web animations",
+  "description": "Animation engine and utility functions for web",
   "main": "lib/A.umd.js",
   "module": "lib/index.js",
   "repository": "exah/A",
