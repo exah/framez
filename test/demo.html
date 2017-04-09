@@ -43,9 +43,9 @@
     <script src="../dist/main.js"></script>
     <script>
       (function () {
-        var { animate, handlers, easings } = A
+        var { animate, handlers, timing } = A
         var { ease, scroll, number, unit, object, updateObject, styles } = handlers
-        var { easeInOutQuad, elasticInOut } = easings
+        var { easeInOut, elasticInOut } = timing
 
         var $play = document.querySelector('.js-play')
         var $toggleHeight = document.querySelector('.js-toggle-height')
@@ -59,7 +59,7 @@
         )()
 
         animate(
-          ease(easeInOutQuad),
+          ease(easeInOut()),
           unit(0, '350px'),
           (res) => console.log('easing', res.unit)
         )()
@@ -75,7 +75,7 @@
         )(100).finished.then(() => console.log('source', source))
 
         $play.addEventListener('click', function handleClick () {
-          animate(ease(easeInOutQuad), scroll('.js-target', -10))(2000)
+          animate(ease(easeInOut()), scroll('.js-target', -10))(2000)
         })
 
         var jump = animate(scroll(0))
@@ -93,7 +93,7 @@
           var $heightTarget = document.querySelector('.js-height-target')
 
           animate(
-            ease(easeInOutQuad),
+            ease(easeInOut()),
             styles($heightTarget, isCollapsed
               ? { height: window.innerHeight, opacity: 1 }
               : { height: 0, opacity: 0.1 }

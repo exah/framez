@@ -1,4 +1,4 @@
-import { deferredPromise } from './utils'
+import { deferredPromise } from './utils/deferred-promise'
 
 function engine (onTick, duration = 500) {
   const started = deferredPromise()

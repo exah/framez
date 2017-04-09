@@ -1,7 +1,7 @@
 import animate from './animate'
 import * as handlers from './handlers'
-import * as easings from './easings'
+import * as timing from './timing'
 
-export { handlers, easings, animate }
+export { handlers, timing, animate }
 
 export default animate

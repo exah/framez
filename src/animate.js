@@ -1,5 +1,5 @@
 import engine from './engine'
-import { compose } from './utils'
+import compose from './utils/compose'
 
 function animate (...handlers) {
   const handler = compose(handlers)

@@ -1,5 +1,8 @@
-import { select } from './dom.js'
-import { nextNumber, nextUnit, nextObject, updateStyles } from './utils'
+import select from './utils/select'
+import nextNumber from './utils/next-number'
+import nextUnit from './utils/next-unit'
+import nextObject from './utils/next-object'
+import updateStyles from './utils/update-styles'
 
 export const ease = (fn) => (res) => ({
   ...res,
