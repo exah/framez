@@ -43,8 +43,17 @@
     <script src="../dist/A.js"></script>
     <script>
       (function () {
-        var { animate, handlers, timing } = A
-        var { ease, scroll, number, unit, object, updateObject, styles } = handlers
+        var {
+          animate,
+          timing,
+          ease,
+          scroll,
+          number,
+          unit,
+          object,
+          updateObject,
+          styles
+        } = A
         var { easeInOut, elasticInOut } = timing
 
         var $play = document.querySelector('.js-play')
