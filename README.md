@@ -13,9 +13,9 @@ API is unstable so I recommend you to install package with `--exact` flag. Packa
 ### Install
 
 ```sh
-$ npm install --save --exact @exah/A
+$ npm install --save --exact @exah/a
 # OR
-$ yarn add --exact @exah/A
+$ yarn add --exact @exah/a
 ```
 
 
@@ -29,10 +29,10 @@ $ yarn add --exact @exah/A
 1. Use as module in webpack 2 / rollup project (recommended):
 
   ```js
-  import animate from '@exah/A/lib/animate'
-  import styles from '@exah/A/lib/styles'
-  import ease from '@exah/A/lib/ease'
-  import easeInOut from '@exah/A/lib/timing/ease-in-out'
+  import animate from '@exah/a/lib/animate'
+  import styles from '@exah/a/lib/styles'
+  import ease from '@exah/a/lib/ease'
+  import easeInOut from '@exah/a/lib/timing/ease-in-out'
 
   const fadeAway = animate(
     ease(easeInOut()), 

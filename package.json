@@ -1,5 +1,5 @@
 {
-  "name": "@exah/A",
+  "name": "@exah/a",
   "version": "0.0.0",
   "description": "Animation engine and utility functions for web",
   "main": "lib/A.umd.js",
