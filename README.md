@@ -1,19 +1,19 @@
+⚠️ This project is work in progress
+
+---
+
 # A
 
-Collection of functions for creating web animations
-
----
-
-> ⚠️ This project is work in progress
-
----
+> Collection of functions for creating web animations
 
 ## Usage
 
+API is unstable so I recomend install package using `yarn` and `--exact` flag
+
 ```sh
-$ npm install --save @exah/A
+$ npm install --save --exact @exah/A
 # OR
-$ yarn add @exah/A
+$ yarn add --exact @exah/A
 ```
 
 ---
