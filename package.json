@@ -9,10 +9,10 @@
   "license": "MIT",
   "files": [ "lib" ],
   "scripts": {
-    "dev": "rollup -c -w",
-    "build": "npm run build:bundle && npm run build:es6",
+    "watch": "rollup -c -w",
+    "build": "npm run build:umd && npm run build:es6",
     "build:es6": "buble --objectAssign Object.assign -n modules -i src -o lib",
-    "build:bundle": "rollup -c",
+    "build:umd": "rollup -c",
     "prebuild": "rimraf lib",
     "prewatch": "rimraf lib",
     "lint": "eslint src"
