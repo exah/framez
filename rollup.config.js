@@ -14,5 +14,5 @@ export default {
     uglify()
   ],
   sourceMap: true,
-  dest: 'lib/A.umd.js'
+  dest: 'lib/a.umd.bundle.js'
 }
