@@ -21,7 +21,8 @@
     "prebuild": "rimraf dist",
     "postbuild": "cp package.json README.md LICENSE dist",
     "prewatch": "rimraf dist",
-    "publish": "cd dist && npm publish",
+    "publish-package": "cd dist && npm publish",
+    "prepublish-package": "npm run build",
     "lint": "eslint src"
   },
   "devDependencies": {
