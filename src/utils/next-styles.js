@@ -7,7 +7,7 @@ import setStyle from './set-style'
 // Update dom element styles with progress and nextUnit
 //
 
-const updateStyles = (target, props) => {
+const nextStyles = (target, props) => {
   const $el = select(target)
   if ($el == null) throw new Error('target not Element in DOM')
 
@@ -23,4 +23,4 @@ const updateStyles = (target, props) => {
   }
 }
 
-export default updateStyles
+export default nextStyles

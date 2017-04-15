@@ -32,9 +32,9 @@ $ yarn add --exact @exah/a
 
     ```js
     import animate from '@exah/a/animate'
-    import styles from '@exah/a/styles'
-    import withEase from '@exah/a/with-ease'
     import easeInOut from '@exah/a/timing/ease-in-out'
+    import updateStyles from '@exah/a/update-styles'
+    import withEase from '@exah/a/with-ease'
     
     // do something awesome
     ```
@@ -42,7 +42,7 @@ $ yarn add --exact @exah/a
   2. With webpack 1 or browserify you can require from umd bundle
 
     ```js
-    import { animate, styles, withEase, easeInOut } from '@exah/a'
+    import { animate, easeInOut, updateStyles, withEase } from '@exah/a'
     
     // do something awesome
     ```
@@ -53,7 +53,7 @@ $ yarn add --exact @exah/a
       <script src="path/to/a.umd.bundle.js"></script>
       <script>
         (function () {
-          var { animate, easeInOut, styles, withEase } = A
+          var { animate, easeInOut, updateStyles, withEase } = A
           
           // do something awesome
         })()
@@ -65,7 +65,7 @@ $ yarn add --exact @exah/a
   ```js
   const fadeAway = animate(
     withEase(easeInOut()), 
-    styles('body', { opacity: 0 })
+    updateStyles('body', { opacity: 0 })
   )
 
   fadeAway(1000).finished.then(() => console.log('done!'))

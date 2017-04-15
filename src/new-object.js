@@ -1,6 +1,7 @@
 import nextObject from './utils/next-object'
 
-const object = (start, end) => {
+// Every animation tick create new object
+const newObject = (start, end) => {
   const next = nextObject(start, end)
   return (res) => ({
     ...res,
@@ -8,4 +9,4 @@ const object = (start, end) => {
   })
 }
 
-export default object
+export default newObject
