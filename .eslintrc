@@ -1,15 +1,8 @@
 {
   "extends": "standard",
   "rules": {
-    "no-shadow": "error",
     "prefer-promise-reject-errors": 0,
-    "sort-imports": [
-      "error",
-      {
-        "ignoreCase": false,
-        "ignoreMemberSort": false,
-        "memberSyntaxSortOrder": [ "none", "all", "multiple", "single" ]
-      }
-    ]
+    "no-shadow": 2,
+    "sort-imports": 2
   }
 }
