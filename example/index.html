@@ -45,6 +45,7 @@
           easeInOut,
           elasticInOut,
           scroll,
+          jump,
           number,
           unit,
           updateObject,
@@ -83,14 +84,16 @@
           animate(withEase(easeInOut()), scroll('.js-target', -10))(2000)
         })
 
-        var jump = animate(scroll(0))
-        var elasticJump = animate(withEase(elasticInOut(1)), scroll($elasticTarget))
+        var elasticScroll = animate(
+          withEase(elasticInOut(1)),
+          scroll($elasticTarget)
+        )
 
         $back.addEventListener('click', function handleClick () {
-          jump(2000)
+          jump(0, 2000)
         })
         $elastic.addEventListener('click', function handleClick () {
-          elasticJump(2000)
+          elasticScroll(2000)
         })
 
         var isCollapsed = false

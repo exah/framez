@@ -1,4 +1,4 @@
-const ease = (fn) => (res) => ({
+const ease = (fn = (n) => n) => (res) => ({
   ...res,
   progress: fn(res.progress)
 })
