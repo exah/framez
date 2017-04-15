@@ -26,24 +26,51 @@ $ yarn add --exact @exah/a
 
 #### Example
 
-1. Use as module in webpack 2 / rollup project (recommended):
+- Import required modules
+
+  1. Import as es6 modules with webpack 2 / rollup (smaller result bundle)
+
+    ```js
+    import animate from '@exah/a/animate'
+    import styles from '@exah/a/styles'
+    import withEase from '@exah/a/with-ease'
+    import easeInOut from '@exah/a/timing/ease-in-out'
+    
+    // do something awesome
+    ```
+
+  2. With webpack 1 or browserify you can require from umd bundle
+
+    ```js
+    import { animate, styles, withEase, easeInOut } from '@exah/a'
+    
+    // do something awesome
+    ```
+
+  3. Or as standalone library in browser, available as `A` global variable
+
+    ```html
+      <script src="path/to/a.umd.bundle.js"></script>
+      <script>
+        (function () {
+          var { animate, easeInOut, styles, withEase } = A
+          
+          // do something awesome
+        })()
+      </script>
+    ```
+
+- Then animate
 
   ```js
-  import animate from '@exah/a/lib/animate'
-  import styles from '@exah/a/lib/styles'
-  import ease from '@exah/a/lib/ease'
-  import easeInOut from '@exah/a/lib/timing/ease-in-out'
-
   const fadeAway = animate(
-    ease(easeInOut()), 
+    withEase(easeInOut()), 
     styles('body', { opacity: 0 })
   )
 
   fadeAway(1000).finished.then(() => console.log('done!'))
-
   ```
 
-2. Or as standalone library in browser, see [example.html](example/index.html)
 
 ## Public Release
 
