@@ -1,21 +1,9 @@
-import easeIn from './ease-in'
-import easeInOut from './ease-in-out'
-import easeInOutSin from './ease-in-out-sin'
-import easeInSin from './ease-in-sin'
-import easeOut from './ease-out'
-import easeOutSin from './ease-out-sin'
-import elasticIn from './elastic-in'
-import elasticInOut from './elastic-in-out'
-import elasticOut from './elastic-out'
-
-export {
-  easeIn,
-  easeOut,
-  easeInOut,
-  easeInSin,
-  easeOutSin,
-  easeInOutSin,
-  elasticIn,
-  elasticOut,
-  elasticInOut
-}
+export { default as easeIn } from './ease-in'
+export { default as easeInOut } from './ease-in-out'
+export { default as easeInOutSin } from './ease-in-out-sin'
+export { default as easeInSin } from './ease-in-sin'
+export { default as easeOut } from './ease-out'
+export { default as easeOutSin } from './ease-out-sin'
+export { default as elasticIn } from './elastic-in'
+export { default as elasticInOut } from './elastic-in-out'
+export { default as elasticOut } from './elastic-out'
