@@ -16,12 +16,12 @@
   "scripts": {
     "watch": "rollup -c -w",
     "build": "npm run build:umd && npm run build:es6",
-    "build:es6": "buble --objectAssign Object.assign -n modules -i src -o lib",
+    "build:es6": "buble --objectAssign Object.assign -n modules -i src -o dist",
     "build:umd": "rollup -c",
-    "prebuild": "rimraf lib",
-    "postbuild": "cp package.json README.md LICENSE lib/",
-    "prewatch": "rimraf lib",
-    "publish": "cd lib && npm publish",
+    "prebuild": "rimraf dist",
+    "postbuild": "cp package.json README.md LICENSE dist",
+    "prewatch": "rimraf dist",
+    "publish": "cd dist && npm publish",
     "lint": "eslint src"
   },
   "devDependencies": {
