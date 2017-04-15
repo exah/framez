@@ -1,6 +1,6 @@
 {
   "name": "@exah/a",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Animation engine and utility functions for web",
   "main": "a.umd.bundle.js",
   "module": "index.js",
