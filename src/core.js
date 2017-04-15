@@ -7,15 +7,16 @@ function core (onTick, duration = 500) {
   let frame = null
   let start = null
   let end = null
+  let lastResult = null
 
   function pause () {
     window.cancelAnimationFrame(frame)
     frame = null
   }
 
-  function stop () {
+  function stop (result) {
     pause()
-    finished.resolve()
+    finished.resolve(lastResult)
     start = null
     end = null
   }
@@ -38,7 +39,7 @@ function core (onTick, duration = 500) {
     const progress = elapsed / duration
     const isEnd = (remain < (1000 / 60))
 
-    onTick(
+    lastResult = onTick(
       isEnd !== true
         ? { elapsed, remain, duration, progress, isStart, isEnd }
         : { elapsed: duration, remain: 0, duration, progress: 1, isStart, isEnd }
