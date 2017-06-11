@@ -42,6 +42,7 @@
       (function () {
         var {
           animate,
+          duration,
           easeInOut,
           elasticInOut,
           scroll,
@@ -60,15 +61,17 @@
         var $elasticTarget = document.querySelector('.js-elastic-target')
 
         animate(
+          duration(),
           number(0, 350),
           (res) => console.log('linear', res.number)
-        )()
+        )
 
         animate(
+          duration(),
           withEase(easeInOut()),
           unit(0, '350px'),
           (res) => console.log('easing', res.unit)
-        )()
+        )
 
         const source = {
           height: 10,
@@ -76,24 +79,32 @@
         }
 
         animate(
+          duration(100),
           updateObject(source, { height: 500, width: 1000 }),
-          (res) => console.log('target', res.object)
-        )(100).finished.then(() => console.log('source', source))
+          (res) => res // console.log('target', res.object)
+        ).finished.then(() => null /* console.log('source', source) */)
 
         $play.addEventListener('click', function handleClick () {
-          animate(withEase(easeInOut()), scroll('.js-target', -10))(2000)
+          animate(
+            duration(2000),
+            withEase(easeInOut()),
+            scroll('.js-target', -10)
+          )
         })
 
-        var elasticScroll = animate(
-          withEase(elasticInOut(1)),
-          scroll($elasticTarget)
+        var elasticScroll = () => (
+          animate(
+            duration(2000),
+            withEase(elasticInOut(1)),
+            scroll($elasticTarget)
+          )
         )
 
         $back.addEventListener('click', function handleClick () {
           jump(0, 2000)
         })
         $elastic.addEventListener('click', function handleClick () {
-          elasticScroll(2000)
+          elasticScroll()
         })
 
         var isCollapsed = false
@@ -101,12 +112,13 @@
           var $heightTarget = document.querySelector('.js-height-target')
 
           animate(
+            duration(),
             withEase(easeInOut()),
             updateStyles($heightTarget, isCollapsed
               ? { height: window.innerHeight, opacity: 1 }
               : { height: 0, opacity: 0.1 }
             )
-          )()
+          )
           .finished
           .then(() => {
             isCollapsed = !isCollapsed
