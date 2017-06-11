@@ -1,6 +1,6 @@
 {
-  "name": "@exah/a",
-  "version": "0.0.1",
+  "name": "framez",
+  "version": "0.0.0",
   "description": "Animation engine and utility functions for web",
   "main": "index.umd.js",
   "module": "index.js",
