@@ -1,7 +1,5 @@
-import animate from '../animate'
-import withTime from '../with-time'
-import withEase from '../with-ease'
-import scroll from '../actions/scroll'
+import { animate, withEase, withTime } from '../core'
+import { scroll } from '../actions'
 import { isNum } from '../utils/is'
 
 const jump = (target, optsOrTime = {}) => {

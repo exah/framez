@@ -1,4 +1,4 @@
-import { deferredPromise } from './utils/deferred-promise'
+import { deferredPromise } from '../utils/deferred-promise'
 
 function engine (onTick) {
   let frame = null

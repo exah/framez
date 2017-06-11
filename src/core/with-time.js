@@ -1,4 +1,4 @@
-import { isNum } from './utils/is'
+import { isNum } from '../utils/is'
 
 const DEFAULT_OPTS = {
   duration: 500,
