@@ -31,31 +31,16 @@ $ yarn add --exact @exah/a
   1. Import as es6 modules with webpack 2 / rollup (smaller result bundle)
 
     ```js
-    import animate from '@exah/a/animate'
-    import easeInOut from '@exah/a/timing/ease-in-out'
-    import updateStyles from '@exah/a/update-styles'
-    import withEase from '@exah/a/with-ease'
-    
-    // do something awesome
+    import { animate, duration, easeInOut, updateStyles, withEase } from '@exah/a'
     ```
 
-  2. With webpack 1 or browserify you can require from umd bundle
-
-    ```js
-    import { animate, easeInOut, updateStyles, withEase } from '@exah/a'
-    
-    // do something awesome
-    ```
-
-  3. Or as standalone library in browser, available as `A` global variable
+  2. Or as standalone library in browser, available as `A` global variable
 
     ```html
-      <script src="path/to/a.umd.bundle.js"></script>
+      <script src="/node_modules/@exah/a/dist/index.umd.js"></script>
       <script>
         (function () {
-          var { animate, easeInOut, updateStyles, withEase } = A
-          
-          // do something awesome
+          var { animate, duration, easeInOut, updateStyles, withEase } = A
         })()
       </script>
     ```
@@ -63,12 +48,15 @@ $ yarn add --exact @exah/a
 - Then animate
 
   ```js
-  const fadeAway = animate(
-    withEase(easeInOut()), 
-    updateStyles('body', { opacity: 0 })
+  const fadeOut = (target) => (
+    animate(
+      duration(1000),
+      withEase(easeInOut(2)), 
+      updateStyles(target, { opacity: 0 })
+    )
   )
 
-  fadeAway(1000).finished.then(() => console.log('done!'))
+  fadeOut('body')
   ```
 
 
