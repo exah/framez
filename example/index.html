@@ -16,6 +16,14 @@
         margin-bottom: 10px;
         padding: 10px;
       }
+      .section--transformed {
+        height: 50%;
+        transform:
+          scale(.5, 1)
+          translate(30px, 30%)
+          rotate(5deg)
+          skew(10deg, 30deg);
+      }
     </style>
   </head>
   <body>
@@ -25,7 +33,7 @@
     <section class="section js-height-target js-elastic-target">
       <button class="js-toggle-height">Animate Height</button>
     </section>
-    <section class="section"></section>
+    <section class="section section--transformed"></section>
     <section class="section"></section>
     <section class="section"></section>
     <section class="section js-target">
@@ -50,7 +58,9 @@
           unit,
           updateObject,
           updateStyles,
-          withEase
+          withEase,
+          getTransformStyle,
+          objectToFunctions
         } = A
 
         var $play = document.querySelector('.js-play')
@@ -58,6 +68,23 @@
         var $back = document.querySelector('.js-back')
         var $elastic = document.querySelector('.js-elastic')
         var $elasticTarget = document.querySelector('.js-elastic-target')
+        var $transformed = document.querySelector('.section--transformed')
+
+        const transforms = getTransformStyle($transformed)
+        const transformsString = objectToFunctions(transforms)
+        const orginal = window.getComputedStyle($transformed, null).transform
+        let count = 0
+
+        setInterval(() => {
+          $transformed.style.transform = ((count + 1) % 2 === 0)
+            ? transformsString
+            : orginal
+
+          count++
+        }, 500)
+
+        console.log(transforms)
+        console.log(transformsString)
 
         animate(
           number(0, 350),

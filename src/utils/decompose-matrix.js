@@ -39,7 +39,7 @@ function decomposeMatrix (matrix) {
     translateX: e + 'px',
     translateY: f + 'px',
     rotate: rotationDeg + 'deg',
-    skewX: skewDeg + 'deg',
+    skew: skewDeg + 'deg',
     scaleX: scaleX,
     scaleY: scaleY
   }
