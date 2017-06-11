@@ -4,8 +4,8 @@ function duration (time = 500) {
 
   return (args) => {
     const { now, play, stop, started } = args
-    const isStart = (start == null || end == null)
 
+    const isStart = (start == null || end == null)
     if (isStart) {
       start = now
       end = now + time
@@ -15,13 +15,34 @@ function duration (time = 500) {
     const elapsed = now - start
     const remain = end - now
     const progress = elapsed / time
+
     const isEnd = (remain < (1000 / 60))
+    if (isEnd) {
+      start = null
+      end = null
 
-    isEnd ? stop() : play()
+      stop()
+      return {
+        elapsed: time,
+        remain: 0,
+        progress: 1,
+        duration: time,
+        isStart,
+        isEnd,
+        ...args
+      }
+    }
 
-    return isEnd !== true
-      ? { elapsed, remain, progress, duration: time, isStart, isEnd, ...args }
-      : { elapsed: time, remain: 0, progress: 1, duration: time, isStart, isEnd, ...args }
+    play()
+    return {
+      elapsed,
+      remain,
+      progress,
+      duration: time,
+      isStart,
+      isEnd,
+      ...args
+    }
   }
 }
 
