@@ -1,8 +1,8 @@
-import compose from './utils/compose'
 import engine from './engine'
+import pipe from './utils/pipe'
 
 function animate (...handlers) {
-  const runner = engine(compose(handlers))
+  const runner = engine(pipe(handlers))
 
   runner.play()
   return runner
