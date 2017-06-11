@@ -1,4 +1,4 @@
-import nextObject from './utils/next-object'
+import nextObject from '../utils/next-object'
 
 const updateObject = (start, end) => {
   const next = nextObject(start, end)

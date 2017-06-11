@@ -1,4 +1,4 @@
-import nextUnit from './utils/next-unit'
+import nextUnit from '../utils/next-unit'
 
 const unit = (startUnit, endUnit) => {
   const next = nextUnit(startUnit, endUnit)

@@ -1,4 +1,4 @@
-import nextStyles from './utils/next-styles'
+import nextStyles from '../utils/next-styles'
 
 const updateStyles = ($el, props) => {
   let next

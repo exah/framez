@@ -2,7 +2,6 @@
   "extends": "standard",
   "rules": {
     "prefer-promise-reject-errors": 0,
-    "no-shadow": 2,
-    "sort-imports": 2
+    "no-shadow": 2
   }
 }
