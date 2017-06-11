@@ -59,15 +59,16 @@
         var $back = document.querySelector('.js-back')
         var $elastic = document.querySelector('.js-elastic')
         var $elasticTarget = document.querySelector('.js-elastic-target')
+        var defaultDuration = duration(500)
 
         animate(
-          duration(),
+          defaultDuration,
           number(0, 350),
           (res) => console.log('linear', res.number)
         )
 
         animate(
-          duration(),
+          defaultDuration,
           withEase(easeInOut()),
           unit(0, '350px'),
           (res) => console.log('easing', res.unit)
@@ -112,11 +113,13 @@
           var $heightTarget = document.querySelector('.js-height-target')
 
           animate(
-            duration(),
+            defaultDuration,
             withEase(easeInOut()),
-            updateStyles($heightTarget, isCollapsed
-              ? { height: window.innerHeight, opacity: 1 }
-              : { height: 0, opacity: 0.1 }
+            updateStyles(
+              $heightTarget,
+              isCollapsed
+                ? { height: window.innerHeight, opacity: 1 }
+                : { height: 0, opacity: 0.1 }
             )
           )
           .finished
