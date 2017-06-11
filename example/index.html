@@ -61,11 +61,14 @@
         var $elasticTarget = document.querySelector('.js-elastic-target')
         var defaultDuration = withTime(500)
 
-        animate(
+        const instance = animate(
           withTime({ iterations: 4, direction: 'alternate' }),
           number(0, 350),
           (res) => console.log('linear', res.number)
         )
+
+        instance.started.then(() => console.log('-- started --'))
+        instance.finished.then(() => console.log('-- finished --'))
 
         animate(
           defaultDuration,
@@ -80,9 +83,9 @@
         }
 
         animate(
-          withTime(100),
+          withTime(200),
           updateObject(source, { height: 500, width: 1000 }),
-          (res) => res // console.log('target', res.object)
+          (res) => console.log('target', res.object)
         ).finished.then(() => console.log('source', source))
 
         $play.addEventListener('click', function handleClick () {
