@@ -42,16 +42,16 @@
       (function () {
         var {
           animate,
-          duration,
           easeInOut,
           elasticInOut,
-          scroll,
           jump,
           number,
+          scroll,
           unit,
           updateObject,
           updateStyles,
-          withEase
+          withEase,
+          withTime
         } = A
 
         var $play = document.querySelector('.js-play')
@@ -59,10 +59,10 @@
         var $back = document.querySelector('.js-back')
         var $elastic = document.querySelector('.js-elastic')
         var $elasticTarget = document.querySelector('.js-elastic-target')
-        var defaultDuration = duration(500)
+        var defaultDuration = withTime(500)
 
         animate(
-          defaultDuration,
+          withTime({ iterations: 4, direction: 'alternate' }),
           number(0, 350),
           (res) => console.log('linear', res.number)
         )
@@ -80,14 +80,14 @@
         }
 
         animate(
-          duration(100),
+          withTime(100),
           updateObject(source, { height: 500, width: 1000 }),
           (res) => res // console.log('target', res.object)
-        ).finished.then(() => null /* console.log('source', source) */)
+        ).finished.then(() => console.log('source', source))
 
         $play.addEventListener('click', function handleClick () {
           animate(
-            duration(2000),
+            withTime(2000),
             withEase(easeInOut()),
             scroll('.js-target', -10)
           )
@@ -95,7 +95,7 @@
 
         var elasticScroll = ($target) => (
           animate(
-            duration(2000),
+            withTime(2000),
             withEase(elasticInOut(1)),
             scroll($target)
           )

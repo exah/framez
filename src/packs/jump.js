@@ -1,15 +1,18 @@
 import animate from '../animate'
-import duration from '../duration'
+import withTime from '../with-time'
+import withEase from '../with-ease'
 import scroll from '../actions/scroll'
-import withEase from '../actions/with-ease'
+import { isNum } from '../utils/is'
 
-const jump = (target, optionsOrDuration) => {
-  const { duration: time, easing, offset } = (typeof optionsOrDuration === 'object')
-    ? optionsOrDuration
-    : { duration: optionsOrDuration }
+const jump = (target, optsOrTime = {}) => {
+  const { duration, easing, offset } = (
+    isNum(optsOrTime)
+      ? { duration: optsOrTime }
+      : optsOrTime
+  )
 
   return animate(
-    duration(time),
+    withTime(duration),
     withEase(easing),
     scroll(target, offset)
   )

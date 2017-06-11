@@ -31,7 +31,7 @@ $ yarn add --exact @exah/a
   1. Import as es6 modules with webpack 2 / rollup (smaller result bundle)
 
     ```js
-    import { animate, duration, easeInOut, updateStyles, withEase } from '@exah/a'
+    import { animate, withTime, easeInOut, updateStyles, withEase } from '@exah/a'
     ```
 
   2. Or as standalone library in browser, available as `A` global variable
@@ -40,7 +40,7 @@ $ yarn add --exact @exah/a
       <script src="/node_modules/@exah/a/dist/index.umd.js"></script>
       <script>
         (function () {
-          var { animate, duration, easeInOut, updateStyles, withEase } = A
+          var { animate, withTime, easeInOut, updateStyles, withEase } = A
         })()
       </script>
     ```
@@ -50,7 +50,7 @@ $ yarn add --exact @exah/a
   ```js
   const fadeOut = (target) => (
     animate(
-      duration(1000),
+      withTime(1000),
       withEase(easeInOut(2)), 
       updateStyles(target, { opacity: 0 })
     )
