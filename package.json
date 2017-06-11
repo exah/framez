@@ -1,25 +1,15 @@
 {
-  "name": "@exah/a",
-  "version": "0.0.1",
-  "description": "Animation engine and utility functions for web",
-  "main": "a.umd.bundle.js",
-  "module": "index.js",
-  "repository": "exah/A",
+  "name": "@exah/a-build",
+  "private": true,
   "author": "John Grishin <hi@johngrish.in>",
   "license": "MIT",
-  "tags": [
-    "animate",
-    "animation",
-    "requestanimationframe",
-    "css"
-  ],
   "scripts": {
     "watch": "rollup -c -w",
     "build": "npm run build:umd && npm run build:es6",
     "build:es6": "buble --objectAssign Object.assign -n modules -i src -o dist",
     "build:umd": "rollup -c",
     "prebuild": "rimraf dist",
-    "postbuild": "cp package.json README.md LICENSE dist",
+    "postbuild": "cp src/package.json README.md LICENSE dist",
     "prewatch": "rimraf dist",
     "publish-package": "cd dist && npm publish",
     "prepublish-package": "npm run build",

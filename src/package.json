@@ -1,0 +1,16 @@
+{
+  "name": "@exah/a",
+  "version": "0.0.1",
+  "description": "Animation engine and utility functions for web",
+  "main": "index.umd.js",
+  "module": "index.js",
+  "repository": "exah/A",
+  "author": "John Grishin <hi@johngrish.in>",
+  "license": "MIT",
+  "tags": [
+    "animate",
+    "animation",
+    "requestanimationframe",
+    "css"
+  ]
+}
