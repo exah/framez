@@ -92,11 +92,11 @@
           )
         })
 
-        var elasticScroll = () => (
+        var elasticScroll = ($target) => (
           animate(
             duration(2000),
             withEase(elasticInOut(1)),
-            scroll($elasticTarget)
+            scroll($target)
           )
         )
 
@@ -104,7 +104,7 @@
           jump(0, 2000)
         })
         $elastic.addEventListener('click', function handleClick () {
-          elasticScroll()
+          elasticScroll($elasticTarget)
         })
 
         var isCollapsed = false
