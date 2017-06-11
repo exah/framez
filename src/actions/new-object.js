@@ -1,4 +1,4 @@
-import nextObject from './utils/next-object'
+import nextObject from '../utils/next-object'
 
 // Every animation tick create new object
 const newObject = (start, end) => {

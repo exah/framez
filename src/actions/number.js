@@ -1,4 +1,4 @@
-import nextNumber from './utils/next-number'
+import nextNumber from '../utils/next-number'
 
 const number = (start, end) => (res) => ({
   ...res,

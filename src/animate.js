@@ -1,15 +1,11 @@
-import compose from './utils/compose'
-import core from './core'
+import engine from './engine'
+import pipe from './utils/pipe'
 
 function animate (...handlers) {
-  const handler = compose(handlers)
+  const runner = engine(pipe(handlers))
 
-  return function (duration) {
-    const runner = core(handler, duration)
-
-    runner.play()
-    return runner
-  }
+  runner.play()
+  return runner
 }
 
 export default animate

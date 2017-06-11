@@ -1,0 +1,7 @@
+export { default as newObject } from './new-object'
+export { default as number } from './number'
+export { default as scroll } from './scroll'
+export { default as unit } from './unit'
+export { default as updateObject } from './update-object'
+export { default as updateStyles } from './update-styles'
+export { default as withEase } from './with-ease'
