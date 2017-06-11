@@ -1,6 +1,7 @@
 export { default as animate } from './animate'
 export { default as engine } from './engine'
 export { default as duration } from './duration'
+export { default as pipe } from './utils/pipe'
 export { version } from './package.json'
 export * from './packs'
 export * from './easings'
