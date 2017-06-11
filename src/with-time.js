@@ -1,18 +1,21 @@
 import { isNum } from './utils/is'
 
-const DEFAULT_LAST_FRAME = (1000 / 60)
-const DEFAULT_DURATION = 500
-const DEFAULT_MAX_ITERATIONS = 1
-const DEFAULT_DIRECTION = 'normal'
+const DEFAULT_OPTS = {
+  duration: 500,
+  lastFrame: (1000 / 60),
+  direction: 'normal',
+  loop: false
+}
+
 const MAX_PROGRESS = 1
 
-function time (optsOrDuration = {}) {
-  const {
-    duration = DEFAULT_DURATION,
-    lastFrame = DEFAULT_LAST_FRAME,
-    direction = DEFAULT_DIRECTION,
-    iterations: maxIterations = DEFAULT_MAX_ITERATIONS
-  } = (isNum(optsOrDuration) ? { duration: optsOrDuration } : optsOrDuration)
+function withTime (optsOrDuration = {}) {
+  const opts = {
+    ...DEFAULT_OPTS,
+    ...(isNum(optsOrDuration) ? { duration: optsOrDuration } : optsOrDuration)
+  }
+  const { duration, lastFrame, direction, loop } = opts
+  const maxIterations = opts.iterations || (loop ? Infinity : direction === 'alternate' ? 2 : 1)
 
   let iteration = 0
   let start = null
@@ -80,4 +83,4 @@ function time (optsOrDuration = {}) {
   }
 }
 
-export default time
+export default withTime
