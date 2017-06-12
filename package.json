@@ -1,28 +1,36 @@
 {
-  "name": "@exah/a-build",
+  "name": "framez-meta",
   "private": true,
   "author": "John Grishin <hi@johngrish.in>",
   "license": "MIT",
   "scripts": {
-    "watch": "rollup -c -w",
+    "watch": "run-p watch:* copy",
+    "watch:es6": "watch 'npm run build:es6' src",
+    "watch:umd": "rollup -c -w",
     "build": "npm run build:umd && npm run build:es6",
     "build:es6": "buble --objectAssign Object.assign -n modules -i src -o dist",
     "build:umd": "rollup -c",
-    "prebuild": "rimraf dist",
-    "postbuild": "cp src/package.json README.md LICENSE dist",
-    "prewatch": "rimraf dist",
-    "publish-package": "cd dist && npm publish",
-    "prepublish-package": "npm run build",
-    "lint": "eslint src"
+    "copy": "run-s copy:*",
+    "copy:base": "copyfiles README.md LICENSE dist",
+    "copy:md": "copyfiles -u 1 'src/**/*.md' dist",
+    "copy:json": "copyfiles -u 1 'src/**/*.json' dist",
+    "cleanup": "rimraf dist",
+    "lint": "eslint src",
+    "prebuild": "npm run cleanup",
+    "postbuild": "npm run copy",
+    "prewatch": "npm run cleanup"
   },
   "devDependencies": {
     "buble": "^0.15.2",
+    "copyfiles": "^1.2.0",
     "eslint": "^3.19.0",
     "eslint-config-standard": "^10.2.1",
     "eslint-plugin-import": "^2.3.0",
     "eslint-plugin-node": "^5.0.0",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
+    "lerna": "^2.0.0-rc.5",
+    "npm-run-all": "^4.0.2",
     "rimraf": "^2.6.1",
     "rollup": "^0.42.0",
     "rollup-plugin-babel": "^2.7.1",
@@ -30,6 +38,7 @@
     "rollup-plugin-buble": "^0.15.0",
     "rollup-plugin-json": "^2.3.0",
     "rollup-plugin-node-resolve": "^3.0.0",
-    "rollup-watch": "^4.0.0"
+    "rollup-watch": "^4.0.0",
+    "watch": "^1.0.2"
   }
 }

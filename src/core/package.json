@@ -1,5 +1,5 @@
 {
-  "name": "framez",
+  "name": "framez-core",
   "version": "0.0.0",
   "description": "Animation engine and utility functions for web",
   "main": "index.umd.js",
