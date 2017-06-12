@@ -12,9 +12,9 @@
 
 
 ```sh
-$ npm install --save --exact framez
+$ npm install --save --exact framez@next
 # OR
-$ yarn add --exact framez
+$ yarn add --exact framez@next
 ```
 
 
