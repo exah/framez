@@ -1,51 +1,45 @@
-<p align="center">⚠️ This project is work in progress ⚠️ </p>
+<p align="center">⚠️ This project is work in progress</p>
 
-# A
+# 🎞 framez
 
-> Animation engine and utility functions for web
+> Modular animation engine and utility functions
+
+
+## Install
+
+> ⚠️  
+> API is unstable. Recomended way to install package with `--exact` flag.
+
+
+```sh
+$ npm install --save --exact framez
+# OR
+$ yarn add --exact framez
+```
 
 
 ## Usage
 
-API is unstable so I recommend you to install package with `--exact` flag. Package will be scoped under `@exah/` until I find a better name 🙃
+Import required modules:
 
-
-### Install
-
-```sh
-$ npm install --save --exact @exah/a
-# OR
-$ yarn add --exact @exah/a
-```
-
-
-### API
-
-> coming soon
-
-
-#### Example
-
-- Import required modules
-
-  1. Import as es6 modules with webpack 2 / rollup (smaller result bundle)
+  1. Import as es6 modules in webpack 2 or rollup.js (smaller result bundle)
 
     ```js
-    import { animate, withTime, easeInOut, updateStyles, withEase } from '@exah/a'
+    import { animate, easeInOut, updateStyles, withEase, withTime } from 'framez'
     ```
 
-  2. Or as standalone library in browser, available as `A` global variable
+  2. Or as standalone library in browser (available from `framez` global variable)
 
     ```html
-      <script src="/node_modules/@exah/a/dist/index.umd.js"></script>
+      <script src="/node_modules/framez/index.umd.js"></script>
       <script>
         (function () {
-          var { animate, withTime, easeInOut, updateStyles, withEase } = A
+          var { animate, easeInOut, updateStyles, withEase, withTime } = framez
         })()
       </script>
     ```
 
-- Then animate
+Then animate with combination of functions:
 
   ```js
   const fadeOut = (target) => (
@@ -60,21 +54,27 @@ $ yarn add --exact @exah/a
   ```
 
 
-## Public Release
+## Why
 
-- [ ] add "Why?" section
-- [ ] add "API" section
-- [ ] information of required polyfills
-- [ ] compare with other libraries
-- [ ] animate multiple dom elements with `styles` function
-- [ ] handle css transforms & prefixes
-- [ ] animate `svg` & `html` attributes
-- [ ] iterations / play direction (forward, reverse, both)
-- [ ] both `scroll` directions
-- [ ] separate duration module from core
-- [ ] react-motion behavior
-- [ ] scroll behavior
-- [ ] demo page
+> coming soon
+
+
+## Docs
+
+> coming soon
+
+
+## Demo
+
+> coming soon
+
+
+## Related
+
+- [Anime.js](https://github.com/juliangarnier/anime) a lightweight JavaScript animation library.
+- [Velocity.js](https://github.com/julianshapiro/velocity) — Accelerated JavaScript animation.
+- [Animate Plus](https://github.com/bendc/animateplus) a CSS and SVG animation library for modern browsers.
+- [BezierEasing](https://github.com/gre/bezier-easing) provides Cubic Bezier Curve easing which generalizes easing functions (ease-in, ease-out, ease-in-out, ...any other custom curve) exactly like in CSS Transitions.
 
 
 ---
