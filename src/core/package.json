@@ -4,7 +4,7 @@
   "description": "Animation engine and utility functions for web",
   "main": "index.umd.js",
   "module": "index.js",
-  "repository": "exah/A",
+  "repository": "exah/framez",
   "author": "John Grishin <hi@johngrish.in>",
   "license": "MIT",
   "tags": [
