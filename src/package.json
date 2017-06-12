@@ -1,6 +1,6 @@
 {
   "name": "framez",
-  "version": "0.0.0",
+  "version": "0.0.2",
   "description": "Animation engine and utility functions for web",
   "main": "index.umd.js",
   "module": "index.js",

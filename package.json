@@ -16,8 +16,8 @@
     "copy:json": "copyfiles -u 1 'src/**/*.json' dist",
     "cleanup": "rimraf dist",
     "lint": "eslint src",
-    "publish": "lerna publish",
     "publish:next": "lerna publish --canary --npm-tag=next",
+    "prepublish:next": "npm run build",
     "prebuild": "npm run cleanup",
     "postbuild": "npm run copy",
     "prewatch": "npm run cleanup"
