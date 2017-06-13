@@ -22,22 +22,22 @@ $ yarn add --exact framez@next
 
 Import required modules:
 
-  1. Import as es6 modules in webpack 2 or rollup.js (smaller result bundle)
+1. Import as es6 modules in webpack 2 or rollup.js (smaller result bundle)
 
-    ```js
-    import { animate, easeInOut, updateStyles, withEase, withTime } from 'framez'
-    ```
+  ```js
+  import { animate, easeInOut, updateStyles, withEase, withTime } from 'framez'
+  ```
 
-  2. Or as standalone library in browser (available from `framez` global variable)
+2. Or as standalone library in browser (available from `framez` global variable)
 
-    ```html
-      <script src="/node_modules/framez/index.umd.js"></script>
-      <script>
-        (function () {
-          var { animate, easeInOut, updateStyles, withEase, withTime } = framez
-        })()
-      </script>
-    ```
+  ```html
+    <script src="/node_modules/framez/index.umd.js"></script>
+    <script>
+      (function () {
+        var { animate, easeInOut, updateStyles, withEase, withTime } = framez
+      })()
+    </script>
+  ```
 
 Then animate with combination of functions:
 
