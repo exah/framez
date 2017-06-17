@@ -43,11 +43,11 @@ Import required modules:
 
 ```js
 const fadeOut = (target) => (
-animate(
-  withTime(1000),
-  withEase(easeInOut(2)), 
-  updateStyles(target, { opacity: 0 })
-)
+  animate(
+    withTime(1000),
+    withEase(easeInOut(2)), 
+    updateStyles(target, { opacity: 0 })
+  )
 )
 
 fadeOut('body')
