@@ -2,13 +2,13 @@
 
 # 🎞 framez
 
-> Modular animation engine and utility functions
+> Modular JS animation library
 
 
 ## Install
 
 > ⚠️  
-> API is unstable. Recomended way to install package with `--exact` flag.
+> API is unstable. Recommended way to install package with `--exact` flag.
 
 
 ```sh
@@ -24,34 +24,34 @@ Import required modules:
 
 1. Import as es6 modules in webpack 2 or rollup.js (smaller result bundle)
 
-  ```js
-  import { animate, easeInOut, updateStyles, withEase, withTime } from 'framez'
-  ```
+    ```js
+    import { animate, easeInOut, updateStyles, withEase, withTime } from 'framez'
+    ```
 
-2. Or as standalone library in browser (available from `framez` global variable)
+    Or as standalone library in browser (available from `framez` global variable)
 
-  ```html
+    ```html
     <script src="/node_modules/framez/index.umd.js"></script>
     <script>
       (function () {
         var { animate, easeInOut, updateStyles, withEase, withTime } = framez
       })()
     </script>
-  ```
+    ```
 
-Then animate with combination of functions:
+2. Then animate with combination of functions:
 
-  ```js
-  const fadeOut = (target) => (
-    animate(
-      withTime(1000),
-      withEase(easeInOut(2)), 
-      updateStyles(target, { opacity: 0 })
-    )
-  )
+```js
+const fadeOut = (target) => (
+animate(
+  withTime(1000),
+  withEase(easeInOut(2)), 
+  updateStyles(target, { opacity: 0 })
+)
+)
 
-  fadeOut('body')
-  ```
+fadeOut('body')
+```
 
 
 ## Why
@@ -72,8 +72,8 @@ Then animate with combination of functions:
 ## Related
 
 - [Anime.js](https://github.com/juliangarnier/anime) a lightweight JavaScript animation library.
-- [Velocity.js](https://github.com/julianshapiro/velocity) — Accelerated JavaScript animation.
 - [Animate Plus](https://github.com/bendc/animateplus) a CSS and SVG animation library for modern browsers.
+- [Velocity.js](https://github.com/julianshapiro/velocity) — Accelerated JavaScript animation.
 - [BezierEasing](https://github.com/gre/bezier-easing) provides Cubic Bezier Curve easing which generalizes easing functions (ease-in, ease-out, ease-in-out, ...any other custom curve) exactly like in CSS Transitions.
 
 
