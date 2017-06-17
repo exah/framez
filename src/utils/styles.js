@@ -9,7 +9,6 @@ export const getStyle = (el, prop) => {
 
 export const setStyle = (el, prop, value) => {
   const nextValue = addUnit(prop, value)
-
   el.style[prop] = nextValue
   return nextValue
 }

@@ -1,5 +1,5 @@
 import engine from './engine'
-import pipe from '../utils/pipe'
+import { pipe } from '../utils/fn'
 
 function animate (...handlers) {
   const runner = engine(pipe(handlers))
