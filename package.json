@@ -18,9 +18,16 @@
     "lint": "eslint src",
     "publish:next": "lerna publish --canary --npm-tag=next",
     "prepublish:next": "npm run build",
+    "precommit": "lint-staged",
     "prebuild": "npm run cleanup",
     "postbuild": "npm run copy",
     "prewatch": "npm run cleanup"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ]
   },
   "devDependencies": {
     "buble": "^0.15.2",
@@ -31,7 +38,9 @@
     "eslint-plugin-node": "^5.0.0",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
+    "husky": "^0.13.4",
     "lerna": "^2.0.0-rc.5",
+    "lint-staged": "^3.6.1",
     "npm-run-all": "^4.0.2",
     "rimraf": "^2.6.1",
     "rollup": "^0.42.0",
