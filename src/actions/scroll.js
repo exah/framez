@@ -8,7 +8,7 @@ function scroll (target = 0, offset = 0) {
 
   return (res) => {
     if (res.isStart) {
-      const $el = select(target)
+      const [ $el ] = select(target)
       start = window.scrollY || window.pageYOffset
       end = isNum(target)
         ? target

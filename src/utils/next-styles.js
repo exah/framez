@@ -1,26 +1,27 @@
-import getStyle from './get-style'
+import { isArr } from './is'
+import { getStyle, setStyle } from './styles'
 import nextUnit from './next-unit'
 import select from './select'
-import setStyle from './set-style'
 
 //
-// Update dom element styles with progress and nextUnit
+// Update dom elements styles
 //
 
-const nextStyles = (target, props) => {
-  const $el = select(target)
-  if ($el == null) throw new Error('target not Element in DOM')
+const nextStyle = ($el, props) => {
+  const next = Object.keys(props).map((propName) => {
+    const val = props[propName]
+    const nextVal = nextUnit(
+      ...(isArr(val) ? val : [ getStyle($el, propName), val ])
+    )
+    return (progress) => setStyle($el, propName, nextVal(progress))
+  })
+  return (progress) => next.map((fn) => fn(progress))
+}
 
-  const keys = Object.keys(props)
-  const next = keys.reduce((obj, prop) => {
-    obj[prop] = nextUnit(getStyle($el, prop), props[prop])
-    return obj
-  }, {})
-
-  return (progress) => {
-    keys.forEach((prop) => setStyle($el, prop, next[prop](progress)))
-    return $el
-  }
+const nextStyles = (targetOrSelector, props) => {
+  const $targets = select(targetOrSelector)
+  const next = $targets.map(($el) => nextStyle($el, props))
+  return (progress) => next.map(fn => fn(progress))
 }
 
 export default nextStyles

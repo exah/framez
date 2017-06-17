@@ -1,15 +1,16 @@
+import { isFn } from '../utils/is'
 import nextStyles from '../utils/next-styles'
 
-const updateStyles = ($el, props) => {
+const updateStyles = ($target, props) => {
   let next
   return (res) => {
-    if (res.isStart) {
-      next = nextStyles($el, props)
+    if (res.isStart || !isFn(next)) {
+      next = nextStyles($target, props)
     }
 
     return {
       ...res,
-      $el: next(res.progress)
+      updateStyles: next(res.progress)
     }
   }
 }
