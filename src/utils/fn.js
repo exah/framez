@@ -4,7 +4,7 @@ export const always = (val) => () => val
 export const identity = (val) => val
 export const log = (...args) => console.log(...args)
 
-// curry(fn)(a, b) -> curriedFn(c) -> fn(a, b, c)
+// curry(fn) -> x -> x(a, b) -> x(c) -> fn(a, b, c)
 export const curry = (fn, ...args) => (
   args.length === fn.length
     ? fn(...args)
