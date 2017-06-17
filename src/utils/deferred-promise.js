@@ -2,7 +2,7 @@
 // Deferred promise
 //
 
-export const deferredPromise = () => {
+const deferredPromise = () => {
   const result = {}
   result.promise = new Promise((resolve, reject) => {
     result.resolve = resolve

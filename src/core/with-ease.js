@@ -1,6 +1,8 @@
-const ease = (fn = (n) => n) => (res) => ({
+import { identity } from '../utils/fn'
+
+const withEase = (fn = identity) => (res) => ({
   ...res,
   progress: fn(res.progress)
 })
 
-export default ease
+export default withEase
