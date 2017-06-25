@@ -1,0 +1,21 @@
+{
+  "name": "framez-core",
+  "version": "0.0.2",
+  "description": "Animation engine and utility functions for web",
+  "main": "lib/index.umd.js",
+  "module": "lib/index.js",
+  "repository": "exah/framez",
+  "author": "John Grishin <hi@johngrish.in>",
+  "license": "MIT",
+  "tags": [
+    "animate",
+    "animation",
+    "requestanimationframe",
+    "css"
+  ],
+  "scripts": {
+    "cleanup": "rimraf lib",
+    "watch": "watch 'npm run build' src",
+    "build": "buble --objectAssign Object.assign -n modules -i src -o lib"
+  }
+}

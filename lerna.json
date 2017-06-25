@@ -1,10 +1,11 @@
 {
   "lerna": "2.0.0-rc.5",
   "npmClient": "yarn",
+  "hoist": true,
   "packages": [
-    "dist",
-    "dist/core",
-    "dist/easings"
+    "packages/framez",
+    "packages/framez-core",
+    "packages/framez-easings"
   ],
   "version": "independent"
 }

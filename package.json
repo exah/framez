@@ -4,24 +4,15 @@
   "author": "John Grishin <hi@johngrish.in>",
   "license": "MIT",
   "scripts": {
-    "watch": "run-p watch:* copy",
-    "watch:es6": "watch 'npm run build:es6' src",
+    "lint": "eslint .",
+    "watch": "run-p watch:*",
+    "watch:es6": "lerna run watch",
     "watch:umd": "rollup -c -w",
-    "build": "npm run build:umd && npm run build:es6",
-    "build:es6": "buble --objectAssign Object.assign -n modules -i src -o dist",
+    "build": "npm run build:es6 && npm run build:umd",
+    "build:es6": "lerna run build",
     "build:umd": "rollup -c",
-    "copy": "run-s copy:*",
-    "copy:base": "copyfiles README.md LICENSE dist",
-    "copy:md": "copyfiles -u 1 'src/**/*.md' dist",
-    "copy:json": "copyfiles -u 1 'src/**/*.json' dist",
-    "cleanup": "rimraf dist",
-    "lint": "eslint src",
-    "publish:next": "lerna publish --canary --npm-tag=next",
-    "prepublish:next": "npm run build",
-    "precommit": "lint-staged",
-    "prebuild": "npm run cleanup",
-    "postbuild": "npm run copy",
-    "prewatch": "npm run cleanup"
+    "prebuild": "lerna run cleanup",
+    "precommit": "lint-staged"
   },
   "lint-staged": {
     "*.js": [

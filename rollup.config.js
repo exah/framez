@@ -3,10 +3,10 @@ import babili from 'rollup-plugin-babili'
 import json from 'rollup-plugin-json'
 import resolve from 'rollup-plugin-node-resolve'
 
-const config = (entry, dest, moduleName) => ({
-  entry,
-  dest,
+const config = (moduleDir, moduleName) => ({
   moduleName,
+  entry: `packages/${moduleDir}/src/index.js`,
+  dest: `packages/${moduleDir}/lib/index.umd.js`,
   format: 'umd',
   sourceMap: true,
   plugins: [
@@ -18,7 +18,7 @@ const config = (entry, dest, moduleName) => ({
 })
 
 export default [
-  config('src/index.js', 'dist/index.umd.js', 'framez'),
-  config('src/core/index.js', 'dist/core/index.umd.js', 'framezCore'),
-  config('src/easings/index.js', 'dist/easings/index.umd.js', 'framezEasings')
+  config('framez', 'framez'),
+  config('framez-core', 'framez'),
+  config('framez-easings', 'easings')
 ]

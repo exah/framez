@@ -1,6 +1,0 @@
-export * from './core'
-export * from './actions'
-export * from './easings'
-export * from './packs'
-export { pipe, curry } from './utils/fn'
-export { name, version } from './package.json'
