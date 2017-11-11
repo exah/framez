@@ -8,7 +8,10 @@ export const isFn = is(Function)
 export const isNum = is(Number)
 export const isStr = is(String)
 export const isArr = is(Array)
-export const isObj = (val) => !isArr(val) && is(Object, val)
+export const isObj = is(Object)
+export const isPlainObj = (val) => (
+  isObj(val) && Object.getPrototypeOf(Object.getPrototypeOf(val))
+)
 export const isDomList = (val) => (
   [ window.NodeList, window.HTMLCollection ].some(c => is(c, val))
 )
