@@ -8,7 +8,7 @@ const config = (entry, dest, moduleName) => ({
   dest,
   moduleName,
   format: 'umd',
-  sourceMap: true,
+  sourceMap: process.env.NODE_ENV !== 'production',
   plugins: [
     json(),
     resolve(),

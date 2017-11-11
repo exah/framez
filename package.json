@@ -7,6 +7,10 @@
   "repository": "exah/framez",
   "main": "dist/index.umd.js",
   "module": "lib/index.js",
+  "files": [
+    "lib",
+    "dist"
+  ],
   "tags": [
     "animate",
     "animation",
@@ -16,7 +20,7 @@
   "scripts": {
     "build": "run-s build:*",
     "build:es6": "buble --objectAssign Object.assign -n modules -i src -o lib",
-    "build:umd": "rollup -c",
+    "build:umd": "cross-env NODE_ENV='production' rollup -c",
     "prebuild": "npm run cleanup",
     "watch": "run-p watch:*",
     "watch:es6": "watch 'npm run build:es6' src",
@@ -36,6 +40,7 @@
   },
   "devDependencies": {
     "buble": "^0.15.2",
+    "cross-env": "5.1.1",
     "eslint": "^3.19.0",
     "eslint-config-standard": "^10.2.1",
     "eslint-plugin-import": "^2.3.0",
