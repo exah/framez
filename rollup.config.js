@@ -19,6 +19,6 @@ const config = (entry, dest, moduleName) => ({
 
 export default [
   config('src/index.js', 'dist/index.umd.js', 'framez'),
-  config('src/core/index.js', 'dist/core/index.umd.js', 'framezCore'),
-  config('src/easings/index.js', 'dist/easings/index.umd.js', 'framezEasings')
+  config('src/core/index.js', 'dist/core.umd.js', 'framezCore'),
+  config('src/easings/index.js', 'dist/easings.umd.js', 'framezEasings')
 ]
