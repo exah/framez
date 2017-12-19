@@ -64,18 +64,26 @@
         const instance = animate(
           withTime({ iterations: 4, direction: 'alternate' }),
           number(0, 350),
-          (res) => console.log('linear', res.number)
+          (res) => {
+            console.log('linear', res.number)
+            return res
+          }
         )
 
+        instance.play()
         instance.started.then(() => console.log('-- started --'))
         instance.finished.then(() => console.log('-- finished --'))
+        instance.then(() => console.log('-- then --'))
 
         animate(
           defaultDuration,
           withEase(easeInOut()),
           unit(0, '350px'),
-          (res) => console.log('easing', res.unit)
-        )
+          (res) => {
+            console.log('easing', res.unit)
+            return res
+          }
+        )()
 
         const source = {
           height: 10,
@@ -85,15 +93,18 @@
         animate(
           withTime(200),
           updateObject(source, { height: 500, width: 1000 }),
-          (res) => console.log('target', res.object)
-        ).finished.then(() => console.log('source', source))
+          (res) => {
+            console.log('target', res.object)
+            return res
+          }
+        )().finished.then(() => console.log('source', source))
 
         $play.addEventListener('click', function handleClick () {
           animate(
             withTime(2000),
             withEase(easeInOut()),
             scroll('.js-target', -10)
-          )
+          )()
         })
 
         var elasticScroll = ($target) => (
@@ -101,11 +112,11 @@
             withTime(2000),
             withEase(elasticInOut(1)),
             scroll($target)
-          )
+          )()
         )
 
         $back.addEventListener('click', function handleClick () {
-          jump(0, 2000)
+          jump(0, 2000)()
         })
         $elastic.addEventListener('click', function handleClick () {
           elasticScroll($elasticTarget)
@@ -124,7 +135,7 @@
                 ? { height: window.innerHeight, opacity: 1 }
                 : { height: 0, opacity: 0.1 }
             )
-          )
+          )()
           .finished
           .then(() => {
             isCollapsed = !isCollapsed

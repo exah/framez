@@ -12,9 +12,9 @@
 
 
 ```sh
-$ npm install --save --exact framez@next
+$ npm install --save --exact framez
 # OR
-$ yarn add --exact framez@next
+$ yarn add --exact framez
 ```
 
 
@@ -47,10 +47,10 @@ const fadeOut = (target) => (
     withTime(1000),
     withEase(easeInOut(2)), 
     updateStyles(target, { opacity: 0 })
-  )
+  ).start()
 )
 
-fadeOut('body')
+fadeOut('body').then(() => console.log('done!'))
 ```
 
 

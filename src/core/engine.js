@@ -2,8 +2,9 @@ import deferredPromise from '../utils/deferred-promise'
 
 function engine (onTick) {
   let frame = null
-  const started = deferredPromise()
-  const finished = deferredPromise()
+  let result = null
+  let started = deferredPromise()
+  let finished = deferredPromise()
 
   function pause () {
     window.cancelAnimationFrame(frame)
@@ -12,6 +13,7 @@ function engine (onTick) {
 
   function stop () {
     pause()
+    result = null
     finished.resolve()
   }
 
@@ -20,16 +22,28 @@ function engine (onTick) {
   }
 
   function tick (now) {
-    onTick({ now, play, pause, stop, started, finished })
+    result = onTick({ ...result, now, play, pause, stop, started, finished })
   }
 
-  return {
+  function start () {
+    started = deferredPromise()
+    finished = deferredPromise()
+
+    play()
+    return methods
+  }
+
+  const methods = {
     play,
     stop,
+    start,
     pause,
-    started: started.promise,
-    finished: finished.promise
+    get started () { return started.promise },
+    get finished () { return finished.promise },
+    then: (fn) => methods.finished.then(fn)
   }
+
+  return Object.assign(start, methods)
 }
 
 export default engine
