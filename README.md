@@ -1,14 +1,11 @@
-<p align="center">⚠️ This project is work in progress</p>
-
-# 🎞 framez
+# WIP: 🎞 framez
 
 > Modular JS animation library
 
 
 ## Install
 
-> ⚠️  
-> API is unstable. Recommended way to install package with `--exact` flag.
+> ⚠️  API is unstable, please install package with `--exact` flag.
 
 
 ```sh
