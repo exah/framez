@@ -1,6 +1,6 @@
 import nextNumber from '../utils/next-number'
 import select from '../utils/select'
-import { isNum } from '../utils/is'
+import { isNum, isNil } from '../utils/is'
 
 function scroll (target = 0, offset = 0) {
   let start = 0
@@ -12,7 +12,7 @@ function scroll (target = 0, offset = 0) {
       start = window.scrollY || window.pageYOffset
       end = isNum(target)
         ? target
-        : $el == null
+        : isNil($el)
           ? 0
           : $el.getBoundingClientRect().top + start
     }

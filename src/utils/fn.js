@@ -1,5 +1,6 @@
 export const T = () => true
 export const F = () => false
+export const noop = () => null
 export const always = (val) => () => val
 export const identity = (val) => val
 export const log = (...args) => console.log(...args)

@@ -4,6 +4,7 @@ export const is = curry((C, val) => (
   val != null && (val.constructor === C || val instanceof C)
 ))
 
+export const isNil = (val) => val == null
 export const isFn = is(Function)
 export const isNum = is(Number)
 export const isStr = is(String)

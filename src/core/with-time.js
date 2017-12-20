@@ -1,4 +1,4 @@
-import { isNum } from '../utils/is'
+import { isNum, isNil } from '../utils/is'
 
 const DEFAULT_OPTS = {
   duration: 500,
@@ -25,7 +25,7 @@ function withTime (optsOrDuration = {}) {
     const { now, play, stop, started } = res
     res.iteration = res.iteration || 0
 
-    const isStart = (res.start == null || res.end == null)
+    const isStart = (isNil(res.start) || isNil(res.end))
     if (isStart) {
       res.start = now
       res.end = (now + duration)

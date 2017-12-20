@@ -1,11 +1,11 @@
-import { isStr, isArr, isDomList, isFn } from './is'
+import { isStr, isArr, isDomList, isFn, isNil } from './is'
 
 //
 // Get array of Elements
 //
 
 const select = (target) => (
-  target == null
+  isNil(target)
     ? []
     : isStr(target)
       ? Array.from(document.querySelectorAll(target))
