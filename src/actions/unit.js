@@ -1,10 +1,11 @@
+import { identity } from '../utils/fn'
 import nextUnit from '../utils/next-unit'
 
-const unit = (startUnit, endUnit) => {
-  const next = nextUnit(startUnit, endUnit)
+const unit = (start, end, callback = identity) => {
+  const next = nextUnit(start, end)
   return (res) => ({
     ...res,
-    unit: next(res.progress)
+    value: callback(next(res.progress))
   })
 }
 

@@ -1,8 +1,9 @@
+import { identity } from '../utils/fn'
 import nextNumber from '../utils/next-number'
 
-const number = (start, end) => (res) => ({
+const number = (start, end, callback = identity) => (res) => ({
   ...res,
-  number: nextNumber(start, end, res.progress)
+  value: callback(nextNumber(start, end, res.progress))
 })
 
 export default number

@@ -63,49 +63,39 @@
 
         const instance = animate(
           withTime({ iterations: 4, direction: 'alternate' }),
-          number(0, 350),
-          (res) => {
-            console.log('linear', res.number)
-            return res
-          }
+          number(0, 350, (val) => console.log('linear', val))
         )
 
-        instance.play()
-        instance.started.then(() => console.log('-- started --'))
+        instance.play().then(() => console.log('-- instance play then --'))
         instance.finished.then(() => console.log('-- finished --'))
-        instance.then(() => console.log('-- then --'))
 
-        animate(
+        const easingInstance = animate(
           defaultDuration,
           withEase(easeInOut()),
-          unit(0, '350px'),
-          (res) => {
-            console.log('easing', res.unit)
-            return res
-          }
-        )()
+          unit(0, '350px', (val) => console.log('easing', val))
+        )().then((val) => console.log(val))
 
         const source = {
           height: 10,
           width: '200px'
         }
 
-        animate(
-          withTime(200),
-          updateObject(source, { height: 500, width: 1000 }),
-          (res) => {
-            console.log('target', res.object)
-            return res
-          }
-        )().finished.then(() => console.log('source', source))
-
-        $play.addEventListener('click', function handleClick () {
+        Promise.all([ instance.finished, easingInstance.finished ]).then((result) =>
           animate(
-            withTime(2000),
-            withEase(easeInOut()),
-            scroll('.js-target', -10)
-          )()
-        })
+            withTime(200),
+            updateObject(
+              source,
+              { height: 500, width: 1000 },
+              (val) => console.log('object', result = val)
+            )
+          ).play().finished.then(() => result)
+        ).then((val) => console.log('promise all object', val))
+
+        $play.addEventListener('click', animate(
+          withTime(2000),
+          withEase(easeInOut()),
+          scroll('.js-target', -10)
+        ))
 
         var elasticScroll = ($target) => (
           animate(
