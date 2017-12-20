@@ -106,7 +106,7 @@
         )
 
         $back.addEventListener('click', function handleClick () {
-          jump(0, 2000)()
+          jump(0, 2000).pause().play()
         })
         $elastic.addEventListener('click', function handleClick () {
           elasticScroll($elasticTarget)

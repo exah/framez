@@ -13,7 +13,7 @@ const jump = (target, optsOrTime = {}) => {
     withTime(duration),
     withEase(easing),
     scroll(target, offset)
-  )
+  ).start()
 }
 
 export default jump
