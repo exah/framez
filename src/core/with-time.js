@@ -49,7 +49,7 @@ function withTime (optsOrDuration) {
     }
 
     const isReversed = (
-      res._isReversed ||
+      res._isReversed === true ||
       (direction === 'reverse') ||
       (direction === 'alternate' && res.iteration % 2 !== 0)
     )
