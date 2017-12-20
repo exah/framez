@@ -1,4 +1,3 @@
-export { default as newObject } from './new-object'
 export { default as number } from './number'
 export { default as scroll } from './scroll'
 export { default as unit } from './unit'
