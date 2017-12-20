@@ -19,6 +19,7 @@ function engine (onTick) {
 
   function play () {
     frame = window.requestAnimationFrame(tick)
+    return methods
   }
 
   function tick (now) {
