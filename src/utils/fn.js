@@ -12,8 +12,9 @@ export const curry = (fn, ...args) => (
     : curry.bind(null, fn, ...args)
 )
 
-// pipe(a, b, c)(value) -> c(b(a(value))) -> value
-export const pipe = (fns) => initial => fns.reduce((value, fn) => fn(value), initial)
+// pipe(a, b, c)(value, ...args) -> c(b(a(value, ..args), ...args), ...args)
+export const pipe = (fns) => (initial, ...args) =>
+  fns.reduce((value, fn) => fn(value, ...args), initial)
 
 // tap(fn, a) -> fn(a) -> a
 export const tap = curry((fn, x) => {
