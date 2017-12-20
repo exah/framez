@@ -61,15 +61,15 @@
         var $elasticTarget = document.querySelector('.js-elastic-target')
         var defaultDuration = withTime(500)
 
-        const instance = animate(
+        const linear = animate(
           withTime({ iterations: 4, direction: 'alternate' }),
           number(0, 350, (val) => console.log('linear', val))
         )
 
-        instance.play().then(() => console.log('-- instance play then --'))
-        instance.finished.then(() => console.log('-- finished --'))
+        linear.play().then(() => console.log('-- linear play then --'))
+        linear.finished.then(() => console.log('-- finished --'))
 
-        const easingInstance = animate(
+        const easing = animate(
           defaultDuration,
           withEase(easeInOut()),
           unit(0, '350px', (val) => console.log('easing', val))
@@ -80,7 +80,7 @@
           width: '200px'
         }
 
-        Promise.all([ instance.finished, easingInstance.finished ]).then((result) =>
+        Promise.all([ linear.finished, easing.finished ]).then((result) =>
           animate(
             withTime(200),
             updateObject(
