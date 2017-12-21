@@ -11,7 +11,7 @@
       }
       .section {
         background-color: rgba(75, 75, 75, .2);
-        height: 100%;
+        height: 50%;
         margin-top: 10px;
         margin-bottom: 10px;
         padding: 10px;
@@ -45,14 +45,19 @@
           animate,
           easeInOut,
           elasticInOut,
+          elasticOut,
           updateNumber,
           updateUnit,
           updateObject,
           updateStyles,
           updateScroll,
           withEase,
-          withTime
-        } = framez
+          withTime,
+          nextUnit,
+          getStyle,
+          pipe,
+          select
+        } = window.framez
 
         var $play = document.querySelector('.js-play')
         var $toggleHeight = document.querySelector('.js-toggle-height')
@@ -114,15 +119,19 @@
 
         var isCollapsed = false
         $toggleHeight.addEventListener('click', function handleClick () {
-          var $heightTarget = document.querySelector('.js-height-target')
+          var $target = document.querySelectorAll('.section')
+          const interpolate = nextUnit(
+            getStyle($target[0], 'height') || 0,
+            (window.innerHeight / 2)
+          )
 
           animate(
             defaultDuration,
             withEase(easeInOut()),
             updateStyles(
-              $heightTarget,
+              $target,
               isCollapsed
-                ? { height: window.innerHeight, opacity: 1 }
+                ? { height: pipe(withEase(elasticOut(0.85)), ({ progress }) => interpolate(progress)), opacity: 1 }
                 : { height: 0, opacity: 0.1 }
             )
           )()
@@ -130,8 +139,10 @@
           .then(() => {
             isCollapsed = !isCollapsed
             if (!isCollapsed) {
-              $heightTarget.style.height = ''
-              $heightTarget.style.opacity = ''
+              select($target).map(($el) => {
+                $el.style.height = ''
+                $el.style.opacity = ''
+              })
             }
           })
         })
