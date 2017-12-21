@@ -4,7 +4,7 @@ const updateStyles = ($target, props) => {
   let next = null
   return (state) => {
     next = state.isStart ? nextStyles($target, props) : next
-    next(state.progress)
+    next(state.progress, state.realProgress)
     return state
   }
 }

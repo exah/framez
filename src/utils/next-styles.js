@@ -1,4 +1,4 @@
-import { isArr, isNil } from './is'
+import { isArr, isNil, isFn } from './is'
 import { getStyle, setStyle } from './styles'
 import nextUnit from './next-unit'
 import select from './select'
@@ -10,20 +10,31 @@ import select from './select'
 const nextStyle = ($el, props) => {
   const next = Object.keys(props).map((propName) => {
     const val = props[propName]
-    let [ fromVal, toVal ] = isArr(val) ? val : [ getStyle($el, propName), val ]
-    if (isNil(fromVal) || isNil(toVal)) {
+
+    if (isFn(val)) {
+      return (progress, realProgress) => setStyle(
+        $el,
+        propName,
+        val({ progress, realProgress }, $el)
+      )
+    }
+
+    const [ startVal, endVal ] = isArr(val) ? val : [ getStyle($el, propName), val ]
+
+    if (isNil(startVal) || isNil(endVal)) {
       throw new Error("Can't get style value, please use array `[ from, to ]`")
     }
-    const nextVal = nextUnit(fromVal, toVal)
+
+    const nextVal = nextUnit(startVal, endVal)
     return (progress) => setStyle($el, propName, nextVal(progress))
   })
-  return (progress) => next.map((fn) => fn(progress))
+  return (...args) => next.map((fn) => fn(...args))
 }
 
 const nextStyles = (targetOrSelector, props) => {
   const $targets = select(targetOrSelector)
   const next = $targets.map(($el) => nextStyle($el, props))
-  return (progress) => next.map(fn => fn(progress))
+  return (...args) => next.map(fn => fn(...args))
 }
 
 export default nextStyles
