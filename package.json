@@ -33,10 +33,7 @@
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "*.js": [
-      "eslint",
-      "git add"
-    ]
+    "*.js": "eslint"
   },
   "devDependencies": {
     "buble": "^0.15.2",
