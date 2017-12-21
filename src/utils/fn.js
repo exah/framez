@@ -13,7 +13,7 @@ export const curry = (fn, ...args) => (
 )
 
 // pipe(a, b, c)(value, ...args) -> c(b(a(value, ..args), ...args), ...args)
-export const pipe = (fns) => (initial, ...args) =>
+export const pipe = (...fns) => (initial, ...args) =>
   fns.reduce((value, fn) => fn(value, ...args), initial)
 
 // tap(fn, a) -> fn(a) -> a
