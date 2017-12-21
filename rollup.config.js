@@ -3,12 +3,14 @@ import babili from 'rollup-plugin-babili'
 import json from 'rollup-plugin-json'
 import resolve from 'rollup-plugin-node-resolve'
 
-const config = (entry, dest, moduleName) => ({
-  entry,
-  dest,
-  moduleName,
-  format: 'umd',
-  sourceMap: process.env.NODE_ENV !== 'production',
+const config = (input, file, name) => ({
+  input,
+  output: {
+    file,
+    name,
+    format: 'umd',
+    sourcemap: process.env.NODE_ENV !== 'production'
+  },
   plugins: [
     json(),
     resolve(),
