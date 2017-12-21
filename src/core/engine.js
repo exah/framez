@@ -47,7 +47,7 @@ function engine (onTick) {
     return play()
   }
 
-  return Object.assign(start, instance)
+  return instance
 }
 
 export default engine
