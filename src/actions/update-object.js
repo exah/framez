@@ -3,11 +3,11 @@ import nextObject from '../utils/next-object'
 
 const updateObject = (start, end, callback = identity) => {
   let next = null
-  return (res) => {
-    next = res.isStart ? nextObject(start, end) : next
+  return (state) => {
+    next = state.isStart ? nextObject(start, end) : next
     return {
-      ...res,
-      value: callback(next(res.progress))
+      ...state,
+      value: callback(next(state.progress))
     }
   }
 }

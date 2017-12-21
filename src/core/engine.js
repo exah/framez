@@ -2,7 +2,7 @@ import deferredPromise from '../utils/deferred-promise'
 
 function engine (onTick) {
   let frame = null
-  let result = {}
+  let state = {}
   let finished = deferredPromise()
 
   const instance = {
@@ -11,6 +11,7 @@ function engine (onTick) {
     start,
     reverse,
     pause,
+    get state () { return state },
     get frame () { return frame },
     get finished () { return finished.promise },
     then: (fn) => instance.finished.then(fn),
@@ -19,10 +20,10 @@ function engine (onTick) {
 
   function tick (now) {
     try {
-      result = onTick(result, now, instance)
+      state = onTick(state, now, instance)
     } catch (error) {
       finished.reject(error)
-      result = {}
+      state = {}
       pause()
     }
   }
@@ -43,13 +44,13 @@ function engine (onTick) {
   }
 
   function stop () {
-    finished.resolve(result)
-    result = {}
+    finished.resolve(state)
+    state = {}
     return pause()
   }
 
   function start (_isReversed) {
-    result = { _isReversed }
+    state = { _isReversed }
     finished = deferredPromise()
     return play()
   }

@@ -6,8 +6,8 @@ function scroll (target = 0, offset = 0) {
   let start = 0
   let end = 0
 
-  return (res) => {
-    if (res.isStart) {
+  return (state) => {
+    if (state.isStart) {
       const [ $el ] = select(target)
       start = window.scrollY || window.pageYOffset
       end = isNum(target)
@@ -17,9 +17,9 @@ function scroll (target = 0, offset = 0) {
           : $el.getBoundingClientRect().top + start
     }
 
-    const nextY = nextNumber(start, end, res.progress)
+    const nextY = nextNumber(start, end, state.progress)
     window.scrollTo(0, nextY)
-    return res
+    return state
   }
 }
 

@@ -21,48 +21,48 @@ function withTime (optsOrDuration) {
     isReversed ? maxProgress - progress : progress
   )
 
-  return (res, now, { play, stop }) => {
-    res.iteration = res.iteration || 0
+  return (state, now, { play, stop }) => {
+    state.iteration = state.iteration || 0
 
-    if (res.isEnd) {
-      res.start = null
-      res.end = null
+    if (state.isEnd) {
+      state.start = null
+      state.end = null
 
-      const nextIteration = (res.iteration + 1)
+      const nextIteration = (state.iteration + 1)
       if (nextIteration >= maxIterations) {
         stop()
-        return res
+        return state
       } else {
-        res.iteration = nextIteration
-        res.isEnd = false
-        res.start = now
-        res.end = (now + duration)
+        state.iteration = nextIteration
+        state.isEnd = false
+        state.start = now
+        state.end = (now + duration)
         play()
-        return res
+        return state
       }
     }
 
-    const isStart = (isNil(res.start) || isNil(res.end))
+    const isStart = (isNil(state.start) || isNil(state.end))
     if (isStart) {
-      res.start = now
-      res.end = (now + duration)
+      state.start = now
+      state.end = (now + duration)
     }
 
     const isReversed = (
-      res._isReversed === true ||
+      state._isReversed === true ||
       (direction === 'reverse') ||
-      (direction === 'alternate' && res.iteration % 2 !== 0)
+      (direction === 'alternate' && state.iteration % 2 !== 0)
     )
 
-    const elapsed = (now - res.start)
-    const remain = (res.end - now)
-    const progress = (elapsed / duration) * maxProgress
+    const elapsed = (now - state.start)
+    const remain = (state.end - now)
+
     const isEnd = (remain < lastFrame)
 
     play()
     return {
-      ...res,
       progress: adjustProgress(isEnd ? maxProgress : progress, isReversed),
+      ...state,
       elapsed: isEnd ? duration : elapsed,
       remain: isEnd ? 0 : remain,
       duration,
