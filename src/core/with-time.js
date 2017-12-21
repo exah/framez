@@ -57,12 +57,15 @@ function withTime (optsOrDuration) {
     const elapsed = (now - state.start)
     const remain = (state.end - now)
 
+    const nextProgress = (elapsed / duration) * maxProgress
     const isEnd = (remain < lastFrame)
+    const progress = adjustProgress(isEnd ? maxProgress : nextProgress, isReversed)
 
     play()
     return {
-      progress: adjustProgress(isEnd ? maxProgress : progress, isReversed),
       ...state,
+      progress,
+      realProgress: progress,
       elapsed: isEnd ? duration : elapsed,
       remain: isEnd ? 0 : remain,
       duration,
