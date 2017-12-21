@@ -1,5 +1,5 @@
-export { default as number } from './number'
-export { default as scroll } from './scroll'
-export { default as unit } from './unit'
+export { default as updateNumber } from './update-number'
+export { default as updateScroll } from './update-scroll'
+export { default as updateUnit } from './update-unit'
 export { default as updateObject } from './update-object'
 export { default as updateStyles } from './update-styles'

@@ -41,15 +41,15 @@
     <script>
       (function () {
         var {
+          jump,
           animate,
           easeInOut,
           elasticInOut,
-          jump,
-          number,
-          scroll,
-          unit,
+          updateNumber,
+          updateUnit,
           updateObject,
           updateStyles,
+          updateScroll,
           withEase,
           withTime
         } = framez
@@ -63,7 +63,7 @@
 
         const linear = animate(
           withTime({ iterations: 4, direction: 'alternate' }),
-          number(0, 350, (val) => console.log('linear', val))
+          updateNumber(0, 350, (val) => console.log('linear', val))
         )
 
         linear.play().then(() => console.log('-- linear play then --'))
@@ -72,7 +72,7 @@
         const easing = animate(
           defaultDuration,
           withEase(easeInOut()),
-          unit(0, '350px', (val) => console.log('easing', val))
+          updateUnit(0, '350px', (val) => console.log('easing', val))
         )().then((val) => console.log(val))
 
         const source = {
@@ -94,14 +94,14 @@
         $play.addEventListener('click', animate(
           withTime(2000),
           withEase(easeInOut()),
-          scroll('.js-target', -10)
+          updateScroll('.js-target', -10)
         ))
 
         var elasticScroll = ($target) => (
           animate(
             withTime(2000),
             withEase(elasticInOut(1)),
-            scroll($target)
+            updateScroll($target)
           )()
         )
 

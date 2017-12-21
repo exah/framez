@@ -2,7 +2,7 @@ import nextNumber from '../utils/next-number'
 import select from '../utils/select'
 import { isNum, isNil } from '../utils/is'
 
-function scroll (target = 0, offset = 0) {
+function updateScroll (target = 0, offset = 0) {
   let start = 0
   let end = 0
 
@@ -23,4 +23,4 @@ function scroll (target = 0, offset = 0) {
   }
 }
 
-export default scroll
+export default updateScroll

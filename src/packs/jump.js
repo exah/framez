@@ -1,5 +1,5 @@
 import { animate, withEase, withTime } from '../core'
-import { scroll } from '../actions'
+import { updateScroll } from '../actions'
 import { isNum } from '../utils/is'
 
 const jump = (target, optsOrTime = {}) => {
@@ -12,7 +12,7 @@ const jump = (target, optsOrTime = {}) => {
   return animate(
     withTime(duration),
     withEase(easing),
-    scroll(target, offset)
+    updateScroll(target, offset)
   ).start()
 }
 

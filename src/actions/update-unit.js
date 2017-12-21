@@ -1,7 +1,7 @@
 import { identity } from '../utils/fn'
 import nextUnit from '../utils/next-unit'
 
-const unit = (start, end, callback = identity) => {
+const updateUnit = (start, end, callback = identity) => {
   const next = nextUnit(start, end)
   return (state) => ({
     ...state,
@@ -9,4 +9,4 @@ const unit = (start, end, callback = identity) => {
   })
 }
 
-export default unit
+export default updateUnit
