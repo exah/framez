@@ -13,11 +13,18 @@ function engine (onTick) {
     pause,
     get frame () { return frame },
     get finished () { return finished.promise },
-    then: (fn) => instance.finished.then(fn)
+    then: (fn) => instance.finished.then(fn),
+    catch: (fn) => instance.finished.catch(fn)
   }
 
   function tick (now) {
-    result = onTick(result, now, instance)
+    try {
+      result = onTick(result, now, instance)
+    } catch (error) {
+      finished.reject(error)
+      result = {}
+      pause()
+    }
   }
 
   function pause () {
