@@ -18,7 +18,7 @@ export const getUnit = (str) => String(str)
 export const splitUnit = (str) => [ getNumber(str), getUnit(str) ]
 export const hasUnit = (str) => UNIT_AT_END.test(str)
 export const addUnit = curry((prop, val) => (
-  hasUnit(val) || PROP_UNIT_WITHOUT_PX.test(prop)
+  hasUnit(val) || PROP_UNIT_WITHOUT_PX.test(prop) || val === ''
     ? val
     : PROP_UNIT_DEG.test(val)
       ? val + 'deg'
