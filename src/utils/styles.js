@@ -12,3 +12,7 @@ export const setStyle = (el, prop, value) => {
   el.style[prop] = nextValue
   return nextValue
 }
+
+export const setStyles = (el, props) => Object.keys(props).forEach((key) => {
+  setStyle(el, key, props[key])
+})
