@@ -4,13 +4,13 @@ import { isNum, isNil } from '../utils/is'
 
 function updateScroll (target = 0, offset = 0) {
   let start = 0
-  let end = 0
+  let end = offset
 
   return (state) => {
     if (state.isStart) {
       const [ $el ] = select(target)
       start = window.scrollY || window.pageYOffset
-      end = isNum(target)
+      end += isNum(target)
         ? target
         : isNil($el)
           ? 0
