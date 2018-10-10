@@ -11,7 +11,7 @@ export const isStr = is(String)
 export const isArr = is(Array)
 export const isObj = is(Object)
 export const isPlainObj = (val) => (
-  isObj(val) && Object.getPrototypeOf(Object.getPrototypeOf(val))
+  Boolean(val) && Object.getPrototypeOf(val) === Object.prototype
 )
 export const isDomList = (val) => (
   [ window.NodeList, window.HTMLCollection ].some(c => is(c, val))
